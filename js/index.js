@@ -63,20 +63,287 @@ ALGORITMO
 
 */
 
-//Obtengo datos que ingrese el usuario
-let local = prompt('Equipo local')
-let puntosLocal = parseInt(prompt('Puntos local'))
-let visitante = prompt('Equipo visitante')
-let puntosVisitante = parseInt(prompt('Puntos visitante'))
+//Listado de equipos, con sus victorias, derrotas y logotipo
+let equipos = [
+  { equipo: 'Atlanta Hawks', victorias: 0, derrotas: 0, imagen: 'atlanta' },
+  { equipo: 'Boston Celtics', victorias: 0, derrotas: 0, imagen: 'boston' },
+  { equipo: 'Brooklyn Nets', victorias: 0, derrotas: 0, imagen: 'brooklyn' },
+  {
+    equipo: 'Charlotte Hornets',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'charlotte',
+  },
+  { equipo: 'Chicago Bulls', victorias: 0, derrotas: 0, imagen: 'chicago' },
+  {
+    equipo: 'Cleveland Cavaliers',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'cleveland',
+  },
+  { equipo: 'Dallas Maverics', victorias: 0, derrotas: 0, imagen: 'dallas' },
+  { equipo: 'Denver Nuggets', victorias: 0, derrotas: 0, imagen: 'denver' },
+  { equipo: 'Detroit Pistons', victorias: 0, derrotas: 0, imagen: 'detroit' },
+  {
+    equipo: 'Golden State Warriors',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'goldenstate',
+  },
+  { equipo: 'Houston Rockets', victorias: 0, derrotas: 0, imagen: 'houston' },
+  { equipo: 'Indiana Pacers', victorias: 0, derrotas: 0, imagen: 'indiana' },
+  {
+    equipo: 'Los Angeles Lakers',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'losangelesl',
+  },
+  {
+    equipo: 'Los Angeles Clippers',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'losangelesc',
+  },
+  { equipo: 'Memphis Grizzles', victorias: 0, derrotas: 0, imagen: 'memphis' },
+  { equipo: 'Miami Heat', victorias: 0, derrotas: 0, imagen: 'miami' },
+  { equipo: 'Milwaukee Bucks', victorias: 0, derrotas: 0, imagen: 'milwaukee' },
+  {
+    equipo: 'Minnesota Tomberwolvers',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'minnesota',
+  },
+  {
+    equipo: 'New Orleans Pelicans',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'neworleans',
+  },
+  { equipo: 'New Yorks Knicks', victorias: 0, derrotas: 0, imagen: 'newyorks' },
+  {
+    equipo: 'Ocklahoma City Thunder',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'ocklahoma',
+  },
+  { equipo: 'Orlando Magic', victorias: 0, derrotas: 0, imagen: 'orlando' },
+  {
+    equipo: 'Philadelphia 76s',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'philadelphia',
+  },
+  { equipo: 'Phoenix Suns', victorias: 0, derrotas: 0, imagen: 'phoenix' },
+  {
+    equipo: 'Portland Trailblazers',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'portland',
+  },
+  {
+    equipo: 'Sacramento Kings',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'sacramento',
+  },
+  {
+    equipo: 'San Antonio Spurs',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'sanantonio',
+  },
+  { equipo: 'Toronto Raptors', victorias: 0, derrotas: 0, imagen: 'toronto' },
+  { equipo: 'Utha Jazz', victorias: 0, derrotas: 0, imagen: 'utha' },
+  {
+    equipo: 'Washington Wizzars',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'washington',
+  },
+]
 
-//Funcion para comparar los datos ingresados y definir el ganador
-function resultado(l, pl, v, pv) {
-  if (pl > pv) {
-    alert(l + ' es el ganador por ' + pl + ' a ' + pv + 'ante ' + v)
-  } else {
-    alert(v + ' es el ganador por ' + pv + ' a ' + pl + ' ante ' + l)
+//PROGRAMAR UN PARTIDO
+
+//Array donde se guardaran los partidos a jugar
+let partidos = []
+
+//Array donde se guardaran los partidos a jugados
+let partidosTerminados = []
+
+//Clase contructora, crea los partidos a jugar
+class Partido {
+  constructor(
+    id,
+    equipoLocal,
+    equipoVisitante,
+    horario,
+    puntosLocal,
+    puntosVisitante,
+  ) {
+    this.id = id
+    this.equipoLocal = equipoLocal
+    this.equipoVisitante = equipoVisitante
+    this.horario = horario
+    this.puntosLocal = puntosLocal
+    this.puntosVisitante = puntosVisitante
+  }
+}
+
+//Funcion que toma los datos ingresados por el usuario y crea el partido a jugar
+function partidoNuevo(equipoLocal, equipoVisitante, horario) {
+  //Genero un id
+  let id = Math.random().toString(36).substr(2, 18)
+  //Toma los datos y utiliza el costructor, los puntos son 0, ya que el partido aun no se jugó
+  partido = new Partido(id, equipoLocal, equipoVisitante, horario, 0, 0)
+  //Agrega el partido creado al array de partidos
+  partidos.push(partido)
+  //Veo si el partido se agrego
+  console.log(partidos)
+}
+
+//Obtengo datos que ingrese el usuario, para definir el partido a jugar
+//✨USO UN CICLO PARA TENER MAS ELEMENTOS EN EL ARRAY✨
+//✨LOS NOMBRES TIENEN QUE SER LOS MISMOS QUE FIGURAN EN EN ARRAY EQUIPOS✨
+for (let i = 0; i < 3; i++) {
+  let equipoLocal = prompt('Equipo local')
+  let horario = prompt('Horario del partido')
+  let equipoVisitante = prompt('Equipo visitante')
+
+  //Ejecuto la funcion
+  partidoNuevo(equipoLocal, equipoVisitante, horario)
+}
+
+//CARGAR RESULTADOS DE LOS PARTIDOS
+function resultados() {
+  //recorro los partidos del dia
+  for (let i = 0; i < partidos.length; i++) {
+    //por cada partido, consulto los resultados
+    let puntosLocal = parseInt(
+      prompt('Puntos local (' + partidos[i].equipoLocal + ')'),
+    )
+    let puntosVisitante = parseInt(
+      prompt('Puntos visitante (' + partidos[i].equipoVisitante + ')'),
+    )
+
+    //Asigno los resultados a cada partido
+    function cargarResultado(puntosLocal, puntosVisitante) {
+      for (let i = 0; i < partidos.length; i++) {
+        partidos[i].puntosLocal = puntosLocal
+        partidos[i].puntosVisitante = puntosVisitante
+      }
+
+      //Creo una clase nueva, para guardar cada partido ya terminado
+      class PartidoFinalizado {
+        constructor(
+          id,
+          equipoLocal,
+          equipoVisitante,
+          puntosLocal,
+          puntosVisitante,
+        ) {
+          this.id = id
+          this.equipoLocal = equipoLocal
+          this.equipoVisitante = equipoVisitante
+          this.puntosLocal = puntosLocal
+          this.puntosVisitante = puntosVisitante
+        }
+      }
+
+      //Toma los datos y utiliza el costructor, asignando cada puntaje
+      partidoFinalizado = new PartidoFinalizado(
+        partidos[i].id,
+        partidos[i].equipoLocal,
+        partidos[i].equipoVisitante,
+        partidos[i].puntosLocal,
+        partidos[i].puntosVisitante,
+      )
+
+      //Agrega el partido completo al array de partidos ya jugados
+      partidosTerminados.push(partidoFinalizado)
+
+      //Veo si el partido se agrego
+      console.log(partidosTerminados)
+    }
+
+    //Ejecuto la funcion
+    cargarResultado(puntosLocal, puntosVisitante)
+
+    //Mensaje en consola de prueba
+    if (partidos[i].puntosLocal > partidos[i].puntosVisitante) {
+      console.log(
+        'Partido ' +
+          partidos[i].id +
+          ': gana ' +
+          partidos[i].equipoLocal +
+          ' a ' +
+          partidos[i].equipoVisitante +
+          ' por ' +
+          partidos[i].puntosLocal +
+          ' a ' +
+          partidos[i].puntosVisitante,
+      )
+    } else {
+      console.log(
+        'Partido ' +
+          partidos[i].id +
+          ': gana ' +
+          partidos[i].equipoVisitante +
+          ' a ' +
+          partidos[i].equipoLocal +
+          ' por ' +
+          partidos[i].puntosVisitante +
+          ' a ' +
+          partidos[i].puntosLocal,
+      )
+    }
   }
 }
 
 //Ejecuto la funcion
-resultado(local, puntosLocal, visitante, puntosVisitante)
+resultados()
+
+//ACTUALIZAR TABLA
+function actualizarTabla() {
+  //Recorro los partidos terminados
+  for (let i = 0; i < partidosTerminados.length; i++) {
+    //Comparo los puntos de cada equipo
+    if (
+      partidosTerminados[i].puntosLocal > partidosTerminados[i].puntosVisitante
+    ) {
+      //Recorro los equipos y aumento, y al correspondiente, su victoria
+      for (let y = 0; y < equipos.length; y++) {
+        if (partidosTerminados[i].equipoLocal === equipos[y].equipo) {
+          equipos[y].victorias++
+        }
+      }
+      //Recorro los equipos y aumento, y al correspondiente, su derrota
+      for (let y = 0; y < equipos.length; y++) {
+        if (partidosTerminados[i].equipoVisitante === equipos[y].equipo) {
+          equipos[y].derrotas++
+        }
+      }
+      console.log(equipos)
+      //Comparo los puntos de cada equipo
+    } else if (
+      partidosTerminados[i].puntosLocal < partidosTerminados[i].puntosVisitante
+    ) {
+      //Recorro los equipos y aumento, y al correspondiente, su victoria
+      for (let y = 0; y < equipos.length; y++) {
+        if (partidosTerminados[i].equipoVisitante === equipos[y].equipo) {
+          equipos[y].victorias++
+        }
+      }
+      //Recorro los equipos y aumento, y al correspondiente, su derrota
+      for (let y = 0; y < equipos.length; y++) {
+        if (partidosTerminados[i].equipoLocal === equipos[y].equipo) {
+          equipos[y].derrotas++
+        }
+      }
+      //Muestro los equipos actualizados
+      console.log(equipos)
+    }
+  }
+}
+
+//Ejecuto la funcion
+actualizarTabla()
