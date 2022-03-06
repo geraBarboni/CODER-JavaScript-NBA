@@ -34,3 +34,7 @@
 .cabecera p {
   font-weight: 600;
 }
+.navbar-brand img {
+  height: 2rem;
+  cursor: pointer;
+}

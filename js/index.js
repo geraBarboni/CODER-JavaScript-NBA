@@ -65,100 +65,215 @@ ALGORITMO
 
 //Listado de equipos, con sus victorias, derrotas y logotipo
 let equipos = [
-  { equipo: 'Atlanta Hawks', victorias: 0, derrotas: 0, imagen: 'atlanta' },
-  { equipo: 'Boston Celtics', victorias: 0, derrotas: 0, imagen: 'boston' },
-  { equipo: 'Brooklyn Nets', victorias: 0, derrotas: 0, imagen: 'brooklyn' },
+  {
+    equipo: 'Atlanta Hawks',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'atlanta',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Boston Celtics',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'boston',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Brooklyn Nets',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'brooklyn',
+    conferencia: 'Este',
+  },
   {
     equipo: 'Charlotte Hornets',
     victorias: 0,
     derrotas: 0,
     imagen: 'charlotte',
+    conferencia: 'Este',
   },
-  { equipo: 'Chicago Bulls', victorias: 0, derrotas: 0, imagen: 'chicago' },
+  {
+    equipo: 'Chicago Bulls',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'chicago',
+    conferencia: 'Este',
+  },
   {
     equipo: 'Cleveland Cavaliers',
     victorias: 0,
     derrotas: 0,
     imagen: 'cleveland',
+    conferencia: 'Este',
   },
-  { equipo: 'Dallas Maverics', victorias: 0, derrotas: 0, imagen: 'dallas' },
-  { equipo: 'Denver Nuggets', victorias: 0, derrotas: 0, imagen: 'denver' },
-  { equipo: 'Detroit Pistons', victorias: 0, derrotas: 0, imagen: 'detroit' },
+  {
+    equipo: 'Dallas Maverics',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'dallas',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Denver Nuggets',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'denver',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Detroit Pistons',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'detroit',
+    conferencia: 'Este',
+  },
   {
     equipo: 'Golden State Warriors',
     victorias: 0,
     derrotas: 0,
     imagen: 'goldenstate',
+    conferencia: 'Oeste',
   },
-  { equipo: 'Houston Rockets', victorias: 0, derrotas: 0, imagen: 'houston' },
-  { equipo: 'Indiana Pacers', victorias: 0, derrotas: 0, imagen: 'indiana' },
+  {
+    equipo: 'Houston Rockets',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'houston',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Indiana Pacers',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'indiana',
+    conferencia: 'Este',
+  },
   {
     equipo: 'Los Angeles Lakers',
     victorias: 0,
     derrotas: 0,
     imagen: 'losangelesl',
+    conferencia: 'Oeste',
   },
   {
     equipo: 'Los Angeles Clippers',
     victorias: 0,
     derrotas: 0,
     imagen: 'losangelesc',
+    conferencia: 'Oeste',
   },
-  { equipo: 'Memphis Grizzles', victorias: 0, derrotas: 0, imagen: 'memphis' },
-  { equipo: 'Miami Heat', victorias: 0, derrotas: 0, imagen: 'miami' },
-  { equipo: 'Milwaukee Bucks', victorias: 0, derrotas: 0, imagen: 'milwaukee' },
+  {
+    equipo: 'Memphis Grizzles',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'memphis',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Miami Heat',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'miami',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Milwaukee Bucks',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'milwaukee',
+    conferencia: 'Este',
+  },
   {
     equipo: 'Minnesota Tomberwolvers',
     victorias: 0,
     derrotas: 0,
     imagen: 'minnesota',
+    conferencia: 'Oeste',
   },
   {
     equipo: 'New Orleans Pelicans',
     victorias: 0,
     derrotas: 0,
     imagen: 'neworleans',
+    conferencia: 'Oeste',
   },
-  { equipo: 'New Yorks Knicks', victorias: 0, derrotas: 0, imagen: 'newyorks' },
+  {
+    equipo: 'New Yorks Knicks',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'newyorks',
+    conferencia: 'Este',
+  },
   {
     equipo: 'Ocklahoma City Thunder',
     victorias: 0,
     derrotas: 0,
     imagen: 'ocklahoma',
+    conferencia: 'Oeste',
   },
-  { equipo: 'Orlando Magic', victorias: 0, derrotas: 0, imagen: 'orlando' },
+  {
+    equipo: 'Orlando Magic',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'orlando',
+    conferencia: 'Este',
+  },
   {
     equipo: 'Philadelphia 76s',
     victorias: 0,
     derrotas: 0,
     imagen: 'philadelphia',
+    conferencia: 'Este',
   },
-  { equipo: 'Phoenix Suns', victorias: 0, derrotas: 0, imagen: 'phoenix' },
+  {
+    equipo: 'Phoenix Suns',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'phoenix',
+    conferencia: 'Oeste',
+  },
   {
     equipo: 'Portland Trailblazers',
     victorias: 0,
     derrotas: 0,
     imagen: 'portland',
+    conferencia: 'Oeste',
   },
   {
     equipo: 'Sacramento Kings',
     victorias: 0,
     derrotas: 0,
     imagen: 'sacramento',
+    conferencia: 'Oeste',
   },
   {
     equipo: 'San Antonio Spurs',
     victorias: 0,
     derrotas: 0,
     imagen: 'sanantonio',
+    conferencia: 'Oeste',
   },
-  { equipo: 'Toronto Raptors', victorias: 0, derrotas: 0, imagen: 'toronto' },
-  { equipo: 'Utha Jazz', victorias: 0, derrotas: 0, imagen: 'utha' },
+  {
+    equipo: 'Toronto Raptors',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'toronto',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Utha Jazz',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'utha',
+    conferencia: 'Oeste',
+  },
   {
     equipo: 'Washington Wizzars',
     victorias: 0,
     derrotas: 0,
     imagen: 'washington',
+    conferencia: 'Este',
   },
 ]
 
@@ -204,6 +319,7 @@ function partidoNuevo(equipoLocal, equipoVisitante, horario) {
 //Obtengo datos que ingrese el usuario, para definir el partido a jugar
 //✨USO UN CICLO PARA TENER MAS ELEMENTOS EN EL ARRAY✨
 //✨LOS NOMBRES TIENEN QUE SER LOS MISMOS QUE FIGURAN EN EN ARRAY EQUIPOS✨
+/*
 for (let i = 0; i < 3; i++) {
   let equipoLocal = prompt('Equipo local')
   let horario = prompt('Horario del partido')
@@ -212,6 +328,16 @@ for (let i = 0; i < 3; i++) {
   //Ejecuto la funcion
   partidoNuevo(equipoLocal, equipoVisitante, horario)
 }
+*/
+
+let equipoLocal = prompt('Equipo local')
+let horario = prompt('Horario del partido')
+let equipoVisitante = prompt('Equipo visitante')
+//Ejecuto la funcion
+partidoNuevo(equipoLocal, equipoVisitante, horario)
+
+//RESULTADOS
+console.log('RESULTADOS:')
 
 //CARGAR RESULTADOS DE LOS PARTIDOS
 function resultados() {
@@ -302,6 +428,9 @@ function resultados() {
 //Ejecuto la funcion
 resultados()
 
+//RESULTADOS ASIGNADOS
+console.log('RESULTADOS ASIGNADOS:')
+
 //ACTUALIZAR TABLA
 function actualizarTabla() {
   //Recorro los partidos terminados
@@ -347,3 +476,47 @@ function actualizarTabla() {
 
 //Ejecuto la funcion
 actualizarTabla()
+
+//TABLA ORDENADA
+console.log('TABLA ORDENADA:')
+
+//Creo una nueva variable donde guardar la tabla actualizada y ordenada
+let tablaOrdenada = null
+
+function tablaOdenada() {
+  //Ordeno a los equipos por victorias conseguidas
+  tablaOdenada = equipos.sort((a, b) => a.victorias + b.victorias)
+  console.log(tablaOdenada)
+}
+
+tablaOdenada()
+
+//TABLA POR CONFERENCIA
+let tablaEste = []
+let tablaOeste = []
+
+function tablaEsteOrdenada() {
+  console.log('TABLA ESTE')
+  //Recorro los equipos de la tabla ordenada y agrego los equipos de la conferencia Este al array tablaEste
+  for (let i = 0; i < tablaOdenada.length; i++) {
+    if (tablaOdenada[i].conferencia === 'Este') {
+      tablaEste.push(tablaOdenada[i])
+    }
+  }
+  console.log(tablaEste)
+}
+
+tablaEsteOrdenada()
+
+function tablaOesteOrdenada() {
+  console.log('TABLA OESTE')
+  //Recorro los equipos de la tabla ordenada y agrego los equipos de la conferencia Oeste al array tablaOeste
+  for (let i = 0; i < tablaOdenada.length; i++) {
+    if (tablaOdenada[i].conferencia === 'Oeste') {
+      tablaOeste.push(tablaOdenada[i])
+    }
+  }
+  console.log(tablaOeste)
+}
+
+tablaOesteOrdenada()
