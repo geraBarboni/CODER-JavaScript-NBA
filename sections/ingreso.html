@@ -23,10 +23,10 @@
       href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
     <title>Proyecto Final JavaScript</title>
   </head>
-  <body class="container-fluid bg-light">
+  <body class="container-fluid bg-light" onload="onload()">
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="../index.html">
@@ -41,18 +41,22 @@
         </div>
       </div>
     </nav>
+
     <div class="row bg-light login">
       <div class="col-12 m-auto">
         <div class="p-5">
           <img src="./img/logo.png" alt="" class="img-fluid px-5" />
         </div>
         <form>
-          <input type="text" class="form-control my-2" />
-          <input type="password" class="form-control my-2" />
+          <input type="text" id="usuario" class="form-control my-2" />
+          <input type="password" id="pass" class="form-control my-2" />
           <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-dark my-2">Ingresar</button>
+            <button type="button" class="btn btn-dark my-2" id="ingresar">
+              Ingresar
+            </button>
           </div>
         </form>
+        <div id="alerts"></div>
       </div>
     </div>
 

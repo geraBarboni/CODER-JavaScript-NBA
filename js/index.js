@@ -319,6 +319,25 @@ class Partido {
 
 //👇FUNCIONES👇
 
+//0.ASIGNAR EVENTOS
+function onload() {
+  eventoasignarValoresAPartidoNuevo()
+  eventoasignarResultados()
+}
+
+function eventoasignarValoresAPartidoNuevo() {
+  const boton = document.getElementById('asignarValoresAPartidoNuevo')
+  boton.addEventListener('click', () => {
+    asignarValoresAPartidoNuevo()
+  })
+}
+function eventoasignarResultados() {
+  const boton = document.getElementById('asignarResultados')
+  boton.addEventListener('click', () => {
+    asignarResultados()
+  })
+}
+
 //1.CREAR UN PARTIDO
 
 function partidoNuevo(
@@ -400,9 +419,7 @@ function partidosDelDia() {
   let partidosDelDia = document.getElementById('partidosDelDia')
 
   //Si el div esta ocupado con cards, lo limpio, para evitar que se repitan las cards cada vez que ejecuto la funcion
-  if (partidosDelDia.innerHTML != '') {
-    partidosDelDia.innerHTML = ''
-  }
+  partidosDelDia.innerHTML = ''
 
   //Recorro el array de partidos a jugar y por cada ciclo agrego una card con la informacion correspondiente
   for (let i = 0; i < partidosAJugar.length; i++) {
@@ -432,9 +449,7 @@ function resultadosDelDiaNoDefinidos() {
   )
 
   //Si el <div> esta siendo usado, lo limpio para evitar que se repitan las cards
-  if (resultadosDelDiaNoDefinidos.innerHTML != '') {
-    resultadosDelDiaNoDefinidos.innerHTML = ''
-  }
+  resultadosDelDiaNoDefinidos.innerHTML = ''
 
   //Recorro el array "partidosAJugar" y muestro las cards correspondientes a cada partido. Cada card usa el id del partido para tener una referencia en el caso que se necesite editar
   //Ademas, cada input tiene un id (creado con el id del partido y el nombre del equipo), para luego obtener los valores ingresados
@@ -536,9 +551,7 @@ function mostrarResultados() {
   let resultadosDefinidos = document.getElementById('resultadosDefinidos')
 
   //Si el <div> esta siendo usado, lo limpio para evitar que se repitan las cards
-  if (resultadosDefinidos.innerHTML != '') {
-    resultadosDefinidos.innerHTML = ''
-  }
+  resultadosDefinidos.innerHTML = ''
 
   //Recorro el array con los partidos ya finalizados
   for (let i = 0; i < partidosTerminados.length; i++) {
@@ -755,126 +768,3 @@ function tablaOesteOrdenada() {
     `
   }
 }
-
-/*
-    function cargarResultado(puntosLocal, puntosVisitante) {
-      for (let i = 0; i < partidos.length; i++) {
-        partidos[i].puntosLocal = puntosLocal
-        partidos[i].puntosVisitante = puntosVisitante
-      }
-
-      //Creo una clase nueva, para guardar cada partido ya terminado
-      class PartidoFinalizado {
-        constructor(
-          id,
-          equipoLocal,
-          equipoVisitante,
-          puntosLocal,
-          puntosVisitante,
-        ) {
-          this.id = id
-          this.equipoLocal = equipoLocal
-          this.equipoVisitante = equipoVisitante
-          this.puntosLocal = puntosLocal
-          this.puntosVisitante = puntosVisitante
-        }
-      }
-
-      //Toma los datos y utiliza el costructor, asignando cada puntaje
-      partidoFinalizado = new PartidoFinalizado(
-        partidos[i].id,
-        partidos[i].equipoLocal,
-        partidos[i].equipoVisitante,
-        partidos[i].puntosLocal,
-        partidos[i].puntosVisitante,
-      )
-
-      //Agrega el partido completo al array de partidos ya jugados
-      partidosTerminados.push(partidoFinalizado)
-
-      //Veo si el partido se agrego
-      console.log(partidosTerminados)
-    }
-
-    //Ejecuto la funcion
-    cargarResultado(puntosLocal, puntosVisitante)
-
-    //Mensaje en consola de prueba
-    if (partidos[i].puntosLocal > partidos[i].puntosVisitante) {
-      console.log(
-        'Partido ' +
-          partidos[i].id +
-          ': gana ' +
-          partidos[i].equipoLocal +
-          ' a ' +
-          partidos[i].equipoVisitante +
-          ' por ' +
-          partidos[i].puntosLocal +
-          ' a ' +
-          partidos[i].puntosVisitante,
-      )
-    } else {
-      console.log(
-        'Partido ' +
-          partidos[i].id +
-          ': gana ' +
-          partidos[i].equipoVisitante +
-          ' a ' +
-          partidos[i].equipoLocal +
-          ' por ' +
-          partidos[i].puntosVisitante +
-          ' a ' +
-          partidos[i].puntosLocal,
-      )
-    }
-  }
-}
-*/
-
-//Ejecuto la funcion
-//resultados()
-
-//RESULTADOS ASIGNADOS
-//console.log('RESULTADOS ASIGNADOS:')
-
-/*
-conferencia: "Este"
-derrotas: 0
-equipo: "Boston Celtics"
-imagen: "boston"
-victorias: 1
-*/
-
-/*
-tablaOdenada()
-
-//TABLA POR CONFERENCIA
-let tablaEste = []
-let tablaOeste = []
-
-function tablaEsteOrdenada() {
-  console.log('TABLA ESTE')
-  //Recorro los equipos de la tabla ordenada y agrego los equipos de la conferencia Este al array tablaEste
-  for (let i = 0; i < tablaOdenada.length; i++) {
-    if (tablaOdenada[i].conferencia === 'Este') {
-      tablaEste.push(tablaOdenada[i])
-    }
-  }
-  console.log(tablaEste)
-}
-
-tablaEsteOrdenada()
-
-function tablaOesteOrdenada() {
-  console.log('TABLA OESTE')
-  //Recorro los equipos de la tabla ordenada y agrego los equipos de la conferencia Oeste al array tablaOeste
-  for (let i = 0; i < tablaOdenada.length; i++) {
-    if (tablaOdenada[i].conferencia === 'Oeste') {
-      tablaOeste.push(tablaOdenada[i])
-    }
-  }
-  console.log(tablaOeste)
-}
-
-tablaOesteOrdenada()
-*/
