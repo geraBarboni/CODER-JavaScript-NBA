@@ -38,3 +38,7 @@
   height: 2rem;
   cursor: pointer;
 }
+#alerts {
+  position: absolute;
+  z-index: 99;
+}

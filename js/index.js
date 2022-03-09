@@ -63,6 +63,8 @@ ALGORITMO
 
 */
 
+//👇ELEMENTOS👇
+
 //Listado de equipos, con sus victorias, derrotas y logotipo
 let equipos = [
   {
@@ -202,7 +204,7 @@ let equipos = [
     equipo: 'New Yorks Knicks',
     victorias: 0,
     derrotas: 0,
-    imagen: 'newyorks',
+    imagen: 'newyork',
     conferencia: 'Este',
   },
   {
@@ -277,81 +279,484 @@ let equipos = [
   },
 ]
 
-//PROGRAMAR UN PARTIDO
-
 //Array donde se guardaran los partidos a jugar
-let partidos = []
+let partidosAJugar = []
 
 //Array donde se guardaran los partidos a jugados
 let partidosTerminados = []
+
+//Array donde se guarda la tabla actualizada y ordenada
+let tablaOrdenada = []
+
+//Arrays donde se guardan las tablas ordenadas por conferencia
+let tablaEste = []
+let tablaOeste = []
 
 //Clase contructora, crea los partidos a jugar
 class Partido {
   constructor(
     id,
-    equipoLocal,
-    equipoVisitante,
+    equipoLocalName,
+    equipoLocalValue,
+    equipoVisitanteName,
+    equipoVisitanteValue,
     horario,
     puntosLocal,
     puntosVisitante,
   ) {
     this.id = id
-    this.equipoLocal = equipoLocal
-    this.equipoVisitante = equipoVisitante
+    this.equipoLocalName = equipoLocalName
+    this.equipoLocalValue = equipoLocalValue
+    this.equipoVisitanteName = equipoVisitanteName
+    this.equipoVisitanteValue = equipoVisitanteValue
     this.horario = horario
     this.puntosLocal = puntosLocal
     this.puntosVisitante = puntosVisitante
   }
 }
 
-//Funcion que toma los datos ingresados por el usuario y crea el partido a jugar
-function partidoNuevo(equipoLocal, equipoVisitante, horario) {
+//👆ELEMENTOS👆
+
+//👇FUNCIONES👇
+
+//1.CREAR UN PARTIDO
+
+function partidoNuevo(
+  equipoLocalName,
+  equipoLocalValue,
+  equipoVisitanteName,
+  equipoVisitanteValue,
+  horario,
+) {
   //Genero un id
   let id = Math.random().toString(36).substr(2, 18)
+
   //Toma los datos y utiliza el costructor, los puntos son 0, ya que el partido aun no se jugó
-  partido = new Partido(id, equipoLocal, equipoVisitante, horario, 0, 0)
-  //Agrega el partido creado al array de partidos
-  partidos.push(partido)
-  //Veo si el partido se agrego
-  console.log(partidos)
+  let partido = new Partido(
+    id,
+    equipoLocalName,
+    equipoLocalValue,
+    equipoVisitanteName,
+    equipoVisitanteValue,
+    horario,
+    0,
+    0,
+  )
+
+  //Agrega el partido creado al array de partidos a jugar
+  partidosAJugar.push(partido)
+
+  //Llamo a la funcion que mostrara en pantalla los partidos del dia
+  partidosDelDia()
+
+  //Llamo a la funcion que mostrara en pantalla los partidos del dia a completar
+  resultadosDelDiaNoDefinidos()
 }
 
-//Obtengo datos que ingrese el usuario, para definir el partido a jugar
-//✨USO UN CICLO PARA TENER MAS ELEMENTOS EN EL ARRAY✨
-//✨LOS NOMBRES TIENEN QUE SER LOS MISMOS QUE FIGURAN EN EN ARRAY EQUIPOS✨
-/*
-for (let i = 0; i < 3; i++) {
-  let equipoLocal = prompt('Equipo local')
-  let horario = prompt('Horario del partido')
-  let equipoVisitante = prompt('Equipo visitante')
+//2.ASIGNAR RIVALES DE CADA PARTIDO
 
-  //Ejecuto la funcion
-  partidoNuevo(equipoLocal, equipoVisitante, horario)
+function asignarValoresAPartidoNuevo() {
+  //Tomo el elemento del input
+  let equipoLocal = document.getElementById('local')
+
+  //Tomo el value de ese elemento, este es equivalente al nombre de la imagen a mostrar
+  let equipoLocalValue = equipoLocal.value
+
+  //Tomo el texto del <option> seleccionado por si es necesario mostrarlo en pantalla
+  let equipoLocalText = equipoLocal.options[equipoLocal.selectedIndex].text
+
+  //Tomo el elemento del input
+  let equipoVisitante = document.getElementById('visitante')
+
+  //Tomo el value de ese elemento, este es equivalente al nombre de la imagen a mostrar
+  let equipoVisitanteValue = equipoVisitante.value
+
+  //Tomo el texto del <option> seleccionado por si es necesario mostrarlo en pantalla
+  let equipoVisitanteText =
+    equipoVisitante.options[equipoVisitante.selectedIndex].text
+
+  //Tomo el horario ingresado
+  let horario = document.getElementById('horario').value
+
+  //Llamo a funcion partidoNuevo y le paso los valores obtenidos
+  partidoNuevo(
+    equipoLocalText,
+    equipoLocalValue,
+    equipoVisitanteText,
+    equipoVisitanteValue,
+    horario,
+  )
+
+  //Intento fallido de limpiar los inputs :P
+  equipoLocal = ''
+  equipoVisitante = ''
+  horario = ''
 }
-*/
 
-let equipoLocal = prompt('Equipo local')
-let horario = prompt('Horario del partido')
-let equipoVisitante = prompt('Equipo visitante')
-//Ejecuto la funcion
-partidoNuevo(equipoLocal, equipoVisitante, horario)
+//3.MOSTRAR PARTIDOS EN PANTALLA (RIVALES Y HORARIOS)
 
-//RESULTADOS
-console.log('RESULTADOS:')
+function partidosDelDia() {
+  //Tomo el div donde se mostraran las cards
+  let partidosDelDia = document.getElementById('partidosDelDia')
 
-//CARGAR RESULTADOS DE LOS PARTIDOS
-function resultados() {
+  //Si el div esta ocupado con cards, lo limpio, para evitar que se repitan las cards cada vez que ejecuto la funcion
+  if (partidosDelDia.innerHTML != '') {
+    partidosDelDia.innerHTML = ''
+  }
+
+  //Recorro el array de partidos a jugar y por cada ciclo agrego una card con la informacion correspondiente
+  for (let i = 0; i < partidosAJugar.length; i++) {
+    partidosDelDia.innerHTML += `
+    <div class="card p-3 my-2 shadow">
+    <div class="row">
+      <div class="col-4">
+        <img class="img-fluid" src="../img/${partidosAJugar[i].equipoLocalValue}.png" alt="" />
+      </div>
+      <div class="col-4 m-auto">
+        <p class="text-center m-auto">${partidosAJugar[i].horario}</p>
+      </div>
+      <div class="col-4">
+        <img class="img-fluid" src="../img/${partidosAJugar[i].equipoVisitanteValue}.png" alt="" />
+      </div>
+    </div>
+    `
+  }
+}
+
+//4.MOSTRAR PARTIDOS EN PANTALLA (CON RESULTADO A COMPLETAR)
+
+function resultadosDelDiaNoDefinidos() {
+  //Tomo el <div> donde se cargaran las cards
+  let resultadosDelDiaNoDefinidos = document.getElementById(
+    'resultadosDelDiaNoDefinidos',
+  )
+
+  //Si el <div> esta siendo usado, lo limpio para evitar que se repitan las cards
+  if (resultadosDelDiaNoDefinidos.innerHTML != '') {
+    resultadosDelDiaNoDefinidos.innerHTML = ''
+  }
+
+  //Recorro el array "partidosAJugar" y muestro las cards correspondientes a cada partido. Cada card usa el id del partido para tener una referencia en el caso que se necesite editar
+  //Ademas, cada input tiene un id (creado con el id del partido y el nombre del equipo), para luego obtener los valores ingresados
+  for (let i = 0; i < partidosAJugar.length; i++) {
+    resultadosDelDiaNoDefinidos.innerHTML += `
+      <div class="card p-3 my-2 shadow" id="${partidosAJugar[i].id}">
+        <div class="row">
+          <div class="col-3">
+            <img class="img-fluid" src="../img/${
+              partidosAJugar[i].equipoLocalValue
+            }.png" alt="" />
+          </div>
+          <div class="col-3 m-auto">
+            <input type="text" name="" id="${
+              partidosAJugar[i].id + partidosAJugar[i].equipoLocalValue
+            }" class="form-control" value="${partidosAJugar[i].puntosLocal}"/>
+          </div>
+          <div class="col-3 m-auto">
+            <input type="text" name="" id="${
+              partidosAJugar[i].id + partidosAJugar[i].equipoVisitanteValue
+            }" class="form-control" value="${
+      partidosAJugar[i].puntosVisitante
+    }"/>
+          </div>
+          <div class="col-3">
+            <img class="img-fluid" src="../img/${
+              partidosAJugar[i].equipoVisitanteValue
+            }.png" alt="" />
+          </div>
+        </div>
+      </div>
+    `
+  }
+}
+
+//5.CARGAR RESULTADOS DE LOS PARTIDOS
+
+function asignarResultados() {
+  //Tomo el div donde mostrar las alertas
+  let alert = document.getElementById('alerts')
   //recorro los partidos del dia
-  for (let i = 0; i < partidos.length; i++) {
-    //por cada partido, consulto los resultados
-    let puntosLocal = parseInt(
-      prompt('Puntos local (' + partidos[i].equipoLocal + ')'),
-    )
-    let puntosVisitante = parseInt(
-      prompt('Puntos visitante (' + partidos[i].equipoVisitante + ')'),
-    )
+  for (let i = 0; i < partidosAJugar.length; i++) {
+    //De cada rival, tomo los puntos, provenientes del input de las cards creadas
+    //Puntos del local
+    let puntosLocal = document.getElementById(
+      partidosAJugar[i].id + partidosAJugar[i].equipoLocalValue,
+    ).value
 
-    //Asigno los resultados a cada partido
+    //Puntos del visitante
+    let puntosVisitante = document.getElementById(
+      partidosAJugar[i].id + partidosAJugar[i].equipoVisitanteValue,
+    ).value
+
+    //Compruebo si el usuario ingreso todos los resultados de todos los partidos
+    if (puntosLocal === '0' || puntosVisitante === '0') {
+      alert.innerHTML += `
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        Ingrese correctamente los puntos del partido entre 
+        <strong>${partidosAJugar[i].equipoLocalName}</strong>
+         y 
+        <strong>${partidosAJugar[i].equipoVisitanteName}</strong>
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      `
+
+      //Compruebo si algun partido presenta una igualdad de puntos
+    } else if (puntosLocal == puntosVisitante) {
+      alert.innerHTML += `
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      Los equipos 
+      <strong>${partidosAJugar[i].equipoLocalName}</strong>
+       y 
+      <strong>${partidosAJugar[i].equipoVisitanteName}</strong> estan empatados, por favor ingrese correctamente los puntos de cada equipo
+       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    `
+      //Como ultima opcion, si todo esta correcto, asigno los resultados
+    } else {
+      //Asigno los valores de las variables creadas anteriormente, a los datos correspondientes del objeto
+      partidosAJugar[i].puntosLocal = puntosLocal
+      partidosAJugar[i].puntosVisitante = puntosVisitante
+
+      //Paso los partidos, con todos sus datos ya completados, a los partidos terminados
+      partidosTerminados.push(partidosAJugar[i])
+
+      //Limpio el array partidos
+      partidosAJugar = ''
+
+      //Una vez con todos los partidos ya finalizados, llamo a la funcion que mostrará los resultados de los partidos en pantalla
+      mostrarResultados()
+    }
+  }
+}
+
+//6. MOSTRAR LOS RESULTADOS FINALES EN PANTALLA
+
+function mostrarResultados() {
+  //Llamo al <div> donde se mostraran las cards con los partidos ya definidos
+  let resultadosDefinidos = document.getElementById('resultadosDefinidos')
+
+  //Si el <div> esta siendo usado, lo limpio para evitar que se repitan las cards
+  if (resultadosDefinidos.innerHTML != '') {
+    resultadosDefinidos.innerHTML = ''
+  }
+
+  //Recorro el array con los partidos ya finalizados
+  for (let i = 0; i < partidosTerminados.length; i++) {
+    //Si el ganador es el equipo local, muestro una card con la flecha señalando al ese equipo
+    if (
+      partidosTerminados[i].puntosLocal > partidosTerminados[i].puntosVisitante
+    ) {
+      resultadosDefinidos.innerHTML += `
+          <div class="card p-3 my-2 shadow">
+            <div class="row">
+              <div class="col-4">
+                <img class="img-fluid" src="../img/${partidosTerminados[i].equipoLocalValue}.png" alt="" />
+              </div>
+              <div class="col-4 m-auto">
+                <p class="text-center m-auto">
+                ${partidosTerminados[i].puntosLocal}
+                <i class="bi bi-caret-left-fill"></i>
+                ${partidosTerminados[i].puntosVisitante}
+                </p>
+              </div>
+              <div class="col-4">
+              <img class="img-fluid" src="../img/${partidosTerminados[i].equipoVisitanteValue}.png" alt="" />
+              </div>
+            </div>
+          </div>
+          `
+    } else {
+      //Si el ganador es el equipo visitante, muestro una card con la flecha señalando al ese equipo
+      resultadosDefinidos.innerHTML += `
+            <div class="card p-3 my-2 shadow">
+              <div class="row">
+                <div class="col-4">
+                  <img class="img-fluid" src="../img/${partidosTerminados[i].equipoLocalValue}.png" alt="" />
+                </div>
+                <div class="col-4 m-auto">
+                  <p class="text-center m-auto">
+                  ${partidosTerminados[i].puntosLocal}
+                  <i class="bi bi-caret-right-fill"></i>
+                  ${partidosTerminados[i].puntosVisitante}
+                  </p>
+                </div>
+                <div class="col-4">
+                  <img class="img-fluid" src="../img/${partidosTerminados[i].equipoVisitanteValue}.png" alt="" />
+                </div>
+              </div>
+            </div>
+          `
+    }
+  }
+
+  //Llamo a la funcion que asigna los resultados a cada equipo, para deifir su posicion en la tabla
+  actualizarTabla()
+}
+
+//7.ACTUALIZAR TABLA
+function actualizarTabla() {
+  //Recorro los partidos terminados
+  for (let i = 0; i < partidosTerminados.length; i++) {
+    //Comparo los puntos de cada equipo
+    if (
+      partidosTerminados[i].puntosLocal > partidosTerminados[i].puntosVisitante
+    ) {
+      //Recorro los equipos y aumento, y al correspondiente, su victoria
+      for (let y = 0; y < equipos.length; y++) {
+        if (partidosTerminados[i].equipoLocalName === equipos[y].equipo) {
+          equipos[y].victorias++
+        }
+      }
+      //Recorro los equipos y aumento, y al correspondiente, su derrota
+      for (let y = 0; y < equipos.length; y++) {
+        if (partidosTerminados[i].equipoVisitanteName === equipos[y].equipo) {
+          equipos[y].derrotas++
+        }
+      }
+      console.log(equipos)
+      //Comparo los puntos de cada equipo
+    } else if (
+      partidosTerminados[i].puntosLocal < partidosTerminados[i].puntosVisitante
+    ) {
+      //Recorro los equipos y aumento, y al correspondiente, su victoria
+      for (let y = 0; y < equipos.length; y++) {
+        if (partidosTerminados[i].equipoVisitanteName === equipos[y].equipo) {
+          equipos[y].victorias++
+        }
+      }
+      //Recorro los equipos y aumento, y al correspondiente, su derrota
+      for (let y = 0; y < equipos.length; y++) {
+        if (partidosTerminados[i].equipoLocalName === equipos[y].equipo) {
+          equipos[y].derrotas++
+        }
+      }
+    }
+  }
+  //Una vez con las victorias y las derrotas asignadas, ejecuto la funcion que ordena la de manera correspondiente
+  ordenarTabla()
+}
+
+//👇No ordena correctamente todo, el equipo con mas derrotas no se muestra al final👇
+
+//8.TABLA ORDENADA
+
+function ordenarTabla() {
+  //Ordeno a los equipos por victorias conseguidas, y le asigno esos objetos ordenados al array "tablaOrdenada"
+  tablaOrdenada = equipos.sort((a, b) => a.victorias + b.victorias)
+  //Una vez ordenados, ejecuto la funcion que muestra la tabla en pantalla
+  mostrarTabla()
+}
+
+//10.MOSTRAR TABLAS
+
+function mostrarTabla() {
+  //Llamo al <div> donde se mostraran las cards de la tabla
+  let tablaDePosiciones = document.getElementById('tablaDePosiciones')
+
+  //Recorro el array "tablaOrdenada" y por cada ciclo muestro una card con el orden correspondiente
+  for (let i = 0; i < tablaOrdenada.length; i++) {
+    tablaDePosiciones.innerHTML += `
+    <div class="card p-3 my-2 shadow">
+    <div class="row">
+      <div class="col-3 m-auto">
+        <p class="text-center m-auto">${i + 1}</p>
+      </div>
+      <div class="col-3">
+        <img class="img-fluid" src="../img/${
+          tablaOrdenada[i].imagen
+        }.png" alt="" />
+      </div>
+      <div class="col-3 m-auto">
+        <p class="text-center m-auto">${tablaOrdenada[i].victorias}</p>
+      </div>
+      <div class="col-3 m-auto">
+        <p class="text-center m-auto">${tablaOrdenada[i].derrotas}</p>
+      </div>
+    </div>
+  </div>
+    `
+  }
+
+  //Llamo a las funciones que muestran a las tablas por conferencia
+  tablaEsteOrdenada()
+  tablaOesteOrdenada()
+}
+
+//11.TABLAS POR CONFERENCIA ORDENADAS
+
+function tablaEsteOrdenada() {
+  //Recorro los equipos de la tabla ordenada y agrego los equipos de la conferencia Este al array tablaEste
+  for (let i = 0; i < tablaOrdenada.length; i++) {
+    if (tablaOrdenada[i].conferencia === 'Este') {
+      tablaEste.push(tablaOrdenada[i])
+    }
+  }
+
+  //Llamo al <div> donde se mostraran las cards de la tabla
+  let tablaDePosicionesEste = document.getElementById('tablaDePosicionesEste')
+
+  //Recorro el array "tablaOrdenada" y por cada ciclo muestro una card con el orden correspondiente
+  for (let i = 0; i < tablaEste.length; i++) {
+    tablaDePosicionesEste.innerHTML += `
+      <div class="card p-3 my-2 shadow">
+        <div class="row">
+          <div class="col-3 m-auto">
+            <p class="text-center m-auto">${i + 1}</p>
+          </div>
+          <div class="col-3">
+            <img class="img-fluid" src="../img/${
+              tablaEste[i].imagen
+            }.png" alt="" />
+          </div>
+          <div class="col-3 m-auto">
+            <p class="text-center m-auto">${tablaEste[i].victorias}</p>
+          </div>
+          <div class="col-3 m-auto">
+            <p class="text-center m-auto">${tablaEste[i].derrotas}</p>
+          </div>
+        </div>
+      </div>
+    `
+  }
+}
+
+function tablaOesteOrdenada() {
+  //Recorro los equipos de la tabla ordenada y agrego los equipos de la conferencia Oeste al array tablaOeste
+  for (let i = 0; i < tablaOrdenada.length; i++) {
+    if (tablaOrdenada[i].conferencia === 'Oeste') {
+      tablaOeste.push(tablaOrdenada[i])
+    }
+  }
+
+  //Llamo al <div> donde se mostraran las cards de la tabla
+  let tablaDePosicionesOeste = document.getElementById('tablaDePosicionesOeste')
+
+  //Recorro el array "tablaOrdenada" y por cada ciclo muestro una card con el orden correspondiente
+  for (let i = 0; i < tablaOeste.length; i++) {
+    tablaDePosicionesOeste.innerHTML += `
+      <div class="card p-3 my-2 shadow">
+        <div class="row">
+          <div class="col-3 m-auto">
+            <p class="text-center m-auto">${i + 1}</p>
+          </div>
+          <div class="col-3">
+            <img class="img-fluid" src="../img/${
+              tablaOeste[i].imagen
+            }.png" alt="" />
+          </div>
+          <div class="col-3 m-auto">
+            <p class="text-center m-auto">${tablaOeste[i].victorias}</p>
+          </div>
+          <div class="col-3 m-auto">
+            <p class="text-center m-auto">${tablaOeste[i].derrotas}</p>
+          </div>
+        </div>
+      </div>
+    `
+  }
+}
+
+/*
     function cargarResultado(puntosLocal, puntosVisitante) {
       for (let i = 0; i < partidos.length; i++) {
         partidos[i].puntosLocal = puntosLocal
@@ -424,71 +829,23 @@ function resultados() {
     }
   }
 }
+*/
 
 //Ejecuto la funcion
-resultados()
+//resultados()
 
 //RESULTADOS ASIGNADOS
-console.log('RESULTADOS ASIGNADOS:')
+//console.log('RESULTADOS ASIGNADOS:')
 
-//ACTUALIZAR TABLA
-function actualizarTabla() {
-  //Recorro los partidos terminados
-  for (let i = 0; i < partidosTerminados.length; i++) {
-    //Comparo los puntos de cada equipo
-    if (
-      partidosTerminados[i].puntosLocal > partidosTerminados[i].puntosVisitante
-    ) {
-      //Recorro los equipos y aumento, y al correspondiente, su victoria
-      for (let y = 0; y < equipos.length; y++) {
-        if (partidosTerminados[i].equipoLocal === equipos[y].equipo) {
-          equipos[y].victorias++
-        }
-      }
-      //Recorro los equipos y aumento, y al correspondiente, su derrota
-      for (let y = 0; y < equipos.length; y++) {
-        if (partidosTerminados[i].equipoVisitante === equipos[y].equipo) {
-          equipos[y].derrotas++
-        }
-      }
-      console.log(equipos)
-      //Comparo los puntos de cada equipo
-    } else if (
-      partidosTerminados[i].puntosLocal < partidosTerminados[i].puntosVisitante
-    ) {
-      //Recorro los equipos y aumento, y al correspondiente, su victoria
-      for (let y = 0; y < equipos.length; y++) {
-        if (partidosTerminados[i].equipoVisitante === equipos[y].equipo) {
-          equipos[y].victorias++
-        }
-      }
-      //Recorro los equipos y aumento, y al correspondiente, su derrota
-      for (let y = 0; y < equipos.length; y++) {
-        if (partidosTerminados[i].equipoLocal === equipos[y].equipo) {
-          equipos[y].derrotas++
-        }
-      }
-      //Muestro los equipos actualizados
-      console.log(equipos)
-    }
-  }
-}
+/*
+conferencia: "Este"
+derrotas: 0
+equipo: "Boston Celtics"
+imagen: "boston"
+victorias: 1
+*/
 
-//Ejecuto la funcion
-actualizarTabla()
-
-//TABLA ORDENADA
-console.log('TABLA ORDENADA:')
-
-//Creo una nueva variable donde guardar la tabla actualizada y ordenada
-let tablaOrdenada = null
-
-function tablaOdenada() {
-  //Ordeno a los equipos por victorias conseguidas
-  tablaOdenada = equipos.sort((a, b) => a.victorias + b.victorias)
-  console.log(tablaOdenada)
-}
-
+/*
 tablaOdenada()
 
 //TABLA POR CONFERENCIA
@@ -520,3 +877,4 @@ function tablaOesteOrdenada() {
 }
 
 tablaOesteOrdenada()
+*/

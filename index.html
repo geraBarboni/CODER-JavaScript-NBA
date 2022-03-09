@@ -44,168 +44,76 @@
     <div class="row bg-light">
       <div class="col-12 col-md-4">
         <p class="fs-4 text-center my-3">Partidos del dia</p>
-        <div>
-          <div class="card p-3 my-2 shadow">
-            <div class="row">
-              <div class="col-4">
-                <img class="img-fluid" src="./img/milwaukee.png" alt="" />
-              </div>
-              <div class="col-4 m-auto">
-                <p class="text-center m-auto">15:30</p>
-              </div>
-              <div class="col-4">
-                <img class="img-fluid" src="./img/minnesota.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="card p-3 my-2 shadow">
-            <div class="row">
-              <div class="col-4">
-                <img class="img-fluid" src="./img/chicago.png" alt="" />
-              </div>
-              <div class="col-4 m-auto">
-                <p class="text-center m-auto">15:30</p>
-              </div>
-              <div class="col-4">
-                <img class="img-fluid" src="./img/charlotte.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="card p-3 my-2 shadow">
-            <div class="row">
-              <div class="col-4">
-                <img class="img-fluid" src="./img/neworleans.png" alt="" />
-              </div>
-              <div class="col-4 m-auto">
-                <p class="text-center m-auto">15:30</p>
-              </div>
-              <div class="col-4">
-                <img class="img-fluid" src="./img/portland.png" alt="" />
-              </div>
-            </div>
-          </div>
+        <div id="partidosDelDia">
+          <!--Acá van los partidos del dia con sus respectivos horarios-->
         </div>
       </div>
       <div class="col-12 col-md-4">
         <p class="fs-4 text-center my-3">Resultados</p>
-        <div>
-          <div class="card p-3 my-2 shadow">
-            <div class="row">
-              <div class="col-4">
-                <img class="img-fluid" src="./img/sacramento.png" alt="" />
-              </div>
-              <div class="col-4 m-auto">
-                <p class="text-center m-auto">
-                  115
-                  <i class="bi bi-caret-right-fill"></i>
-                  130
-                </p>
-              </div>
-              <div class="col-4">
-                <img class="img-fluid" src="./img/utha.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="card p-3 my-2 shadow">
-            <div class="row">
-              <div class="col-4">
-                <img class="img-fluid" src="./img/orlando.png" alt="" />
-              </div>
-              <div class="col-4 m-auto">
-                <p class="text-center m-auto">
-                  89
-                  <i class="bi bi-caret-left-fill"></i>
-                  75
-                </p>
-              </div>
-              <div class="col-4">
-                <img class="img-fluid" src="./img/miami.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="card p-3 my-2 shadow">
-            <div class="row">
-              <div class="col-4">
-                <img class="img-fluid" src="./img/ocklahoma.png" alt="" />
-              </div>
-              <div class="col-4 m-auto">
-                <p class="text-center m-auto">
-                  109
-                  <i class="bi bi-caret-right-fill"></i>
-                  108
-                </p>
-              </div>
-              <div class="col-4">
-                <img class="img-fluid" src="./img/atlanta.png" alt="" />
+        <div id="resultadosDefinidos">
+          <!--Acá van los partidos del dia con sus resultados definidos-->
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="tablaGeneral">
+          <p class="fs-4 text-center my-3">Tabla de posiciones general</p>
+          <div id="tablaDePosiciones">
+            <div class="card p-3 my-2 shadow cabecera">
+              <div class="row">
+                <div class="col-3 m-auto">
+                  <p class="text-center m-auto">#</p>
+                </div>
+                <div class="col-3">
+                  <p class="text-center m-auto">Equipo</p>
+                </div>
+                <div class="col-3 m-auto">
+                  <p class="text-center m-auto">Ganados</p>
+                </div>
+                <div class="col-3 m-auto">
+                  <p class="text-center m-auto">Perdidos</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <p class="fs-4 text-center my-3">Tabla de posiciones</p>
-        <div>
-          <div class="card p-3 my-2 shadow cabecera">
-            <div class="row">
-              <div class="col-3 m-auto">
-                <p class="text-center m-auto">#</p>
-              </div>
-              <div class="col-3">
-                <p class="text-center m-auto">Equipo</p>
-              </div>
-              <div class="col-3 m-auto">
-                <p class="text-center m-auto">Ganados</p>
-              </div>
-              <div class="col-3 m-auto">
-                <p class="text-center m-auto">Perdidos</p>
-              </div>
-            </div>
-          </div>
-          <div class="card p-3 my-2 shadow">
-            <div class="row">
-              <div class="col-3 m-auto">
-                <p class="text-center m-auto">1</p>
-              </div>
-              <div class="col-3">
-                <img class="img-fluid" src="./img/ocklahoma.png" alt="" />
-              </div>
-              <div class="col-3 m-auto">
-                <p class="text-center m-auto">10</p>
-              </div>
-              <div class="col-3 m-auto">
-                <p class="text-center m-auto">3</p>
+        <div class="tablaOeste">
+          <p class="fs-4 text-center my-3">Tabla de posiciones Oeste</p>
+          <div id="tablaDePosicionesOeste">
+            <div class="card p-3 my-2 shadow cabecera">
+              <div class="row">
+                <div class="col-3 m-auto">
+                  <p class="text-center m-auto">#</p>
+                </div>
+                <div class="col-3">
+                  <p class="text-center m-auto">Equipo</p>
+                </div>
+                <div class="col-3 m-auto">
+                  <p class="text-center m-auto">Ganados</p>
+                </div>
+                <div class="col-3 m-auto">
+                  <p class="text-center m-auto">Perdidos</p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="card p-3 my-2 shadow">
-            <div class="row">
-              <div class="col-3 m-auto">
-                <p class="text-center m-auto">2</p>
-              </div>
-              <div class="col-3">
-                <img class="img-fluid" src="./img/memphis.png" alt="" />
-              </div>
-              <div class="col-3 m-auto">
-                <p class="text-center m-auto">9</p>
-              </div>
-              <div class="col-3 m-auto">
-                <p class="text-center m-auto">4</p>
-              </div>
-            </div>
-          </div>
-          <div class="card p-3 my-2 shadow">
-            <div class="row">
-              <div class="col-3 m-auto">
-                <p class="text-center m-auto">3</p>
-              </div>
-              <div class="col-3">
-                <img class="img-fluid" src="./img/atlanta.png" alt="" />
-              </div>
-              <div class="col-3 m-auto">
-                <p class="text-center m-auto">8</p>
-              </div>
-              <div class="col-3 m-auto">
-                <p class="text-center m-auto">5</p>
+        </div>
+        <div class="tablaEste">
+          <p class="fs-4 text-center my-3">Tabla de posiciones Este</p>
+          <div id="tablaDePosicionesEste">
+            <div class="card p-3 my-2 shadow cabecera">
+              <div class="row">
+                <div class="col-3 m-auto">
+                  <p class="text-center m-auto">#</p>
+                </div>
+                <div class="col-3">
+                  <p class="text-center m-auto">Equipo</p>
+                </div>
+                <div class="col-3 m-auto">
+                  <p class="text-center m-auto">Ganados</p>
+                </div>
+                <div class="col-3 m-auto">
+                  <p class="text-center m-auto">Perdidos</p>
+                </div>
               </div>
             </div>
           </div>
