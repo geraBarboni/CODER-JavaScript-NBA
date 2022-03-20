@@ -1,6 +1,7 @@
 function onload() {
   eventoingresar()
 }
+onload()
 
 function eventoingresar() {
   const boton = document.getElementById('ingresar')

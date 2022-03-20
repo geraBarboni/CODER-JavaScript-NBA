@@ -26,13 +26,18 @@
     <link rel="stylesheet" href="style.css" />
     <title>Proyecto Final JavaScript</title>
   </head>
-  <body class="container-fluid bg-light" onload="onload()">
+  <body class="container-fluid bg-light">
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="./index.html">
           <img src="./img/logo.png" alt="" />
         </a>
         <div class="d-flex">
+          <a href="./sections/admin.html" class="mx-4">
+            <button class="btn btn-outline-dark" type="submit">
+              admin
+            </button>
+          </a>
           <a href="./sections/ingreso.html">
             <button class="btn btn-outline-dark" type="submit">
               <i class="bi bi-person"></i>
@@ -50,7 +55,7 @@
       </div>
       <div class="col-12 col-md-4">
         <p class="fs-4 text-center my-3">Resultados</p>
-        <div id="resultadosDefinidos">
+        <div id="resultadosDefinidosIndex">
           <!--Acá van los partidos del dia con sus resultados definidos-->
         </div>
       </div>
@@ -58,48 +63,6 @@
         <div class="tablaGeneral">
           <p class="fs-4 text-center my-3">Tabla de posiciones general</p>
           <div id="tablaDePosiciones">
-            <div class="card p-3 my-2 shadow cabecera">
-              <div class="row">
-                <div class="col-3 m-auto">
-                  <p class="text-center m-auto">#</p>
-                </div>
-                <div class="col-3">
-                  <p class="text-center m-auto">Equipo</p>
-                </div>
-                <div class="col-3 m-auto">
-                  <p class="text-center m-auto">Ganados</p>
-                </div>
-                <div class="col-3 m-auto">
-                  <p class="text-center m-auto">Perdidos</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tablaOeste">
-          <p class="fs-4 text-center my-3">Tabla de posiciones Oeste</p>
-          <div id="tablaDePosicionesOeste">
-            <div class="card p-3 my-2 shadow cabecera">
-              <div class="row">
-                <div class="col-3 m-auto">
-                  <p class="text-center m-auto">#</p>
-                </div>
-                <div class="col-3">
-                  <p class="text-center m-auto">Equipo</p>
-                </div>
-                <div class="col-3 m-auto">
-                  <p class="text-center m-auto">Ganados</p>
-                </div>
-                <div class="col-3 m-auto">
-                  <p class="text-center m-auto">Perdidos</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tablaEste">
-          <p class="fs-4 text-center my-3">Tabla de posiciones Este</p>
-          <div id="tablaDePosicionesEste">
             <div class="card p-3 my-2 shadow cabecera">
               <div class="row">
                 <div class="col-3 m-auto">

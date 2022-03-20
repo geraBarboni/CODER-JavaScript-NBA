@@ -26,13 +26,18 @@
     <link rel="stylesheet" href="../style.css" />
     <title>Proyecto Final JavaScript</title>
   </head>
-  <body class="container-fluid bg-light" onload="onload()">
+  <body class="container-fluid bg-light">
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="../index.html">
           <img src="../img/logo.png" alt="" />
         </a>
         <div class="d-flex">
+          <a href="../index.html" class="mx-4">
+            <button class="btn btn-outline-dark" type="submit">
+              index
+            </button>
+          </a>
           <a href="../index.html">
             <button class="btn btn-outline-dark" type="submit">
               <i class="bi bi-grid-3x2-gap"></i>
@@ -43,203 +48,172 @@
     </nav>
     <div id="alerts"></div>
     <div class="row bg-light">
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-3">
         <p class="fs-4 text-center my-3">Partidos del dia</p>
-        <div id="partidosDelDia">
+
+        <form>
+          <select
+            class="form-select my-3"
+            aria-label="Default select example"
+            id="local"
+            required
+          >
+            <option disabled selected>Local</option>
+            <option value="atlanta">Atlanta Hawks</option>
+            <option value="boston">Boston Celtics</option>
+            <option value="brooklyn">Brooklyn Nets</option>
+            <option value="charlotte">Charlotte Hornets</option>
+            <option value="chicago">Chicago Bulls</option>
+            <option value="cleveland">Cleveland Cavaliers</option>
+            <option value="dallas">Dallas Maverics</option>
+            <option value="denver">Denver Nuggets</option>
+            <option value="detroit">Detroit Pistons</option>
+            <option value="goldenstate">
+              Golden State Warriors
+            </option>
+            <option value="houston">Houston Rockets</option>
+            <option value="indiana">Indiana Pacers</option>
+            <option value="losangelesl">Los Angeles Lakers</option>
+            <option value="losangelesc">Los Angeles Clippers</option>
+            <option value="memphis">Memphis Grizzles</option>
+            <option value="miami">Miami Heat</option>
+            <option value="milwaukee">Milwaukee Bucks</option>
+            <option value="minnesota">
+              Minnesota Tomberwolvers
+            </option>
+            <option value="neworleans">New Orleans Pelicans</option>
+            <option value="newyork">New Yorks Knicks</option>
+            <option value="ocklahoma">Ocklahoma City Thunder</option>
+            <option value="orlando">Orlando Magic</option>
+            <option value="philadelphia">Philadelphia 76s</option>
+            <option value="phoenix">Phoenix Suns</option>
+            <option value="portland">
+              Portland Trailblazers
+            </option>
+            <option value="sacramento">Sacramento Kings</option>
+            <option value="sanantonio">San Antonio Spurs</option>
+            <option value="toronto">Toronto Raptors</option>
+            <option value="utha">Utha Jazz</option>
+            <option value="washington">Washington Wizzars</option>
+          </select>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            id="visitante"
+            required
+          >
+            <option disabled selected>Visitante</option>
+            <option value="atlanta">Atlanta Hawks</option>
+            <option value="boston">Boston Celtics</option>
+            <option value="brooklyn">Brooklyn Nets</option>
+            <option value="charlotte">Charlotte Hornets</option>
+            <option value="chicago">Chicago Bulls</option>
+            <option value="cleveland">Cleveland Cavaliers</option>
+            <option value="dallas">Dallas Maverics</option>
+            <option value="denver">Denver Nuggets</option>
+            <option value="detroit">Detroit Pistons</option>
+            <option value="goldenstate">
+              Golden State Warriors
+            </option>
+            <option value="houston">Houston Rockets</option>
+            <option value="indiana">Indiana Pacers</option>
+            <option value="losangelesl">Los Angeles Lakers</option>
+            <option value="losangelesc">Los Angeles Clippers</option>
+            <option value="memphis">Memphis Grizzles</option>
+            <option value="miami">Miami Heat</option>
+            <option value="milwaukee">Milwaukee Bucks</option>
+            <option value="minnesota">
+              Minnesota Tomberwolvers
+            </option>
+            <option value="neworleans">New Orleans Pelicans</option>
+            <option value="newyork">New Yorks Knicks</option>
+            <option value="ocklahoma">Ocklahoma City Thunder</option>
+            <option value="orlando">Orlando Magic</option>
+            <option value="philadelphia">Philadelphia 76s</option>
+            <option value="phoenix">Phoenix Suns</option>
+            <option value="portland">
+              Portland Trailblazers
+            </option>
+            <option value="sacramento">Sacramento Kings</option>
+            <option value="sanantonio">San Antonio Spurs</option>
+            <option value="toronto">Toronto Raptors</option>
+            <option value="utha">Utha Jazz</option>
+            <option value="washington">Washington Wizzars</option>
+          </select>
+
+          <input type="time" id="horario" class="form-control my-3" required/>
+          <div class="d-grid gap-2">
+            <button
+              type="button"
+              class="btn btn-dark"
+              id="asignarValoresAPartidoNuevo"
+            >
+              Agregar
+            </button>
+          </div>
+        </form>
+        <div id="partidosDelDia" class="mt-5">
           <!--Acá van los partidos del dia con sus respectivos horarios-->
         </div>
-          <form>
-            <select
-              class="form-select my-3"
-              aria-label="Default select example"
-              id="local"
-            >
-              <option>Local</option>
-              <option value="atlanta">Atlanta Hawks</option>
-              <option value="boston">Boston Celtics</option>
-              <option value="brooklyn">Brooklyn Nets</option>
-              <option value="charlotte">Charlotte Hornets</option>
-              <option value="chicago">Chicago Bulls</option>
-              <option value="cleveland">Cleveland Cavaliers</option>
-              <option value="dallas">Dallas Maverics</option>
-              <option value="denver">Denver Nuggets</option>
-              <option value="detroit">Detroit Pistons</option>
-              <option value="goldenstate">
-                Golden State Warriors
-              </option>
-              <option value="houston">Houston Rockets</option>
-              <option value="indiana">Indiana Pacers</option>
-              <option value="losangelesl">Los Angeles Lakers</option>
-              <option value="losangelesc">Los Angeles Clippers</option>
-              <option value="memphis">Memphis Grizzles</option>
-              <option value="miami">Miami Heat</option>
-              <option value="milwaukee">Milwaukee Bucks</option>
-              <option value="minnesota">
-                Minnesota Tomberwolvers
-              </option>
-              <option value="neworleans">New Orleans Pelicans</option>
-              <option value="newyork">New Yorks Knicks</option>
-              <option value="ocklahoma">Ocklahoma City Thunder</option>
-              <option value="orlando">Orlando Magic</option>
-              <option value="philadelphia">Philadelphia 76s</option>
-              <option value="phoenix">Phoenix Suns</option>
-              <option value="portland">
-                Portland Trailblazers
-              </option>
-              <option value="sacramento">Sacramento Kings</option>
-              <option value="sanantonio">San Antonio Spurs</option>
-              <option value="toronto">Toronto Raptors</option>
-              <option value="utha">Utha Jazz</option>
-              <option value="washington">Washington Wizzars</option>
-            </select>
-            <select
-              class="form-select"
-              aria-label="Default select example"
-              id="visitante"
-            >
-              <option>Visitante</option>
-              <option value="atlanta">Atlanta Hawks</option>
-              <option value="boston">Boston Celtics</option>
-              <option value="brooklyn">Brooklyn Nets</option>
-              <option value="charlotte">Charlotte Hornets</option>
-              <option value="chicago">Chicago Bulls</option>
-              <option value="cleveland">Cleveland Cavaliers</option>
-              <option value="dallas">Dallas Maverics</option>
-              <option value="denver">Denver Nuggets</option>
-              <option value="detroit">Detroit Pistons</option>
-              <option value="goldenstate">
-                Golden State Warriors
-              </option>
-              <option value="houston">Houston Rockets</option>
-              <option value="indiana">Indiana Pacers</option>
-              <option value="losangelesl">Los Angeles Lakers</option>
-              <option value="losangelesc">Los Angeles Clippers</option>
-              <option value="memphis">Memphis Grizzles</option>
-              <option value="miami">Miami Heat</option>
-              <option value="milwaukee">Milwaukee Bucks</option>
-              <option value="minnesota">
-                Minnesota Tomberwolvers
-              </option>
-              <option value="neworleans">New Orleans Pelicans</option>
-              <option value="newyork">New Yorks Knicks</option>
-              <option value="ocklahoma">Ocklahoma City Thunder</option>
-              <option value="orlando">Orlando Magic</option>
-              <option value="philadelphia">Philadelphia 76s</option>
-              <option value="phoenix">Phoenix Suns</option>
-              <option value="portland">
-                Portland Trailblazers
-              </option>
-              <option value="sacramento">Sacramento Kings</option>
-              <option value="sanantonio">San Antonio Spurs</option>
-              <option value="toronto">Toronto Raptors</option>
-              <option value="utha">Utha Jazz</option>
-              <option value="washington">Washington Wizzars</option>
-            </select>
+      </div>
 
-            <input type="time" id="horario" class="form-control my-3" />
+      <div class="col-12 col-md-3">
+        <p class="fs-4 text-center my-3">Partidos a definir</p>
+        <div>
+          <form>
+            <div id="resultadosDelDiaNoDefinidos">
+              <!--Acá van los partidos del dia con sus resultados a completar-->
+            </div>
             <div class="d-grid gap-2">
-              <button
-                type="button"
-                class="btn btn-dark"
-                id="asignarValoresAPartidoNuevo"
-              >
-                Agregar
+              <button class="btn btn-dark" type="button" id="asignarResultados">
+                Actualizar
               </button>
             </div>
           </form>
         </div>
-      
-      <div class="col-12 col-md-4">
+      </div>
+
+      <div class="col-12 col-md-3">
         <p class="fs-4 text-center my-3">Resultados</p>
         <div>
           <div id="resultadosDefinidos">
             <!--Acá van los partidos del dia con sus resultados definidos-->
           </div>
-          <div>
-            <hr />
-            <form >
-              <div id="resultadosDelDiaNoDefinidos">
-              <!--Acá van los partidos del dia con sus resultados a completar-->
-              </div>
-              <div class="d-grid gap-2">
-                <button class="btn btn-dark" type="button" id="asignarResultados">Actualizar</button>
-              </div>
-            </form>
-          </div>
         </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="tablaGeneral">
-          <p class="fs-4 text-center my-3">Tabla de posiciones general</p>
-          <div id="tablaDePosiciones">
-            <div class="card p-3 my-2 shadow cabecera">
-              <div class="row">
-                <div class="col-3 m-auto">
-                  <p class="text-center m-auto">#</p>
-                </div>
-                <div class="col-3">
-                  <p class="text-center m-auto">Equipo</p>
-                </div>
-                <div class="col-3 m-auto">
-                  <p class="text-center m-auto">Ganados</p>
-                </div>
-                <div class="col-3 m-auto">
-                  <p class="text-center m-auto">Perdidos</p>
+        </div>
+        
+        <div class="col-12 col-md-3">
+          <div class="tablaGeneral">
+            <p class="fs-4 text-center my-3">Tabla de posiciones</p>
+
+            <div id="tablaDePosiciones">
+              <div class="card p-3 my-2 shadow cabecera">
+                <div class="row">
+                  <div class="col-3 m-auto">
+                    <p class="text-center m-auto">#</p>
+                  </div>
+                  <div class="col-3">
+                    <p class="text-center m-auto">Equipo</p>
+                  </div>
+                  <div class="col-3 m-auto">
+                    <p class="text-center m-auto">Ganados</p>
+                  </div>
+                  <div class="col-3 m-auto">
+                    <p class="text-center m-auto">Perdidos</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="tablaOeste">         
-          <p class="fs-4 text-center my-3">Tabla de posiciones Oeste</p>
-          <div id="tablaDePosicionesOeste">
-            <div class="card p-3 my-2 shadow cabecera">
-              <div class="row">
-                <div class="col-3 m-auto">
-                  <p class="text-center m-auto">#</p>
-                </div>
-                <div class="col-3">
-                  <p class="text-center m-auto">Equipo</p>
-                </div>
-                <div class="col-3 m-auto">
-                  <p class="text-center m-auto">Ganados</p>
-                </div>
-                <div class="col-3 m-auto">
-                  <p class="text-center m-auto">Perdidos</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tablaEste">          
-          <p class="fs-4 text-center my-3">Tabla de posiciones Este</p>
-          <div id="tablaDePosicionesEste">
-            <div class="card p-3 my-2 shadow cabecera">
-              <div class="row">
-                <div class="col-3 m-auto">
-                  <p class="text-center m-auto">#</p>
-                </div>
-                <div class="col-3">
-                  <p class="text-center m-auto">Equipo</p>
-                </div>
-                <div class="col-3 m-auto">
-                  <p class="text-center m-auto">Ganados</p>
-                </div>
-                <div class="col-3 m-auto">
-                  <p class="text-center m-auto">Perdidos</p>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
-  </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <script src="../js/index.js"></script>
+    <script src="../js/admin.js"></script>
   </body>
 </html>
