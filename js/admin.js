@@ -416,10 +416,8 @@ function eventoReconocerLocalStoragePartidosTerminados() {
 function eventoReconocerLocalStorageEquipos() {
   equiposLS = JSON.parse(localStorage.getItem('equiposLS'))
   if (equiposLS == null) {
-    console.log('Se crea equiposLS')
     equiposLS = equipos
     localStorage.setItem('equiposLS', JSON.stringify(equiposLS))
-    console.log(equiposLS)
   }
 }
 
@@ -438,27 +436,21 @@ function eventoBotonAgregar() {
 
   //Señales para el usuario
   local.addEventListener('blur', () => {
-    if (local.value === 'Local') {
-      local.style.border = '2px solid #FE5E5E'
-    } else {
-      local.style.border = '2px solid #999'
-    }
+    local.value === 'Local'
+      ? (local.style.border = '2px solid #FE5E5E')
+      : (local.style.border = '2px solid #999')
   })
 
   visitante.addEventListener('blur', () => {
-    if (visitante.value === 'Visitante') {
-      visitante.style.border = '2px solid #FE5E5E'
-    } else {
-      visitante.style.border = '2px solid #999'
-    }
+    visitante.value === 'Visitante'
+      ? (visitante.style.border = '2px solid #FE5E5E')
+      : (visitante.style.border = '2px solid #999')
   })
 
   horario.addEventListener('blur', () => {
-    if (horario.value === '') {
-      horario.style.border = '2px solid #FE5E5E'
-    } else {
-      horario.style.border = '2px solid #999'
-    }
+    horario.value === ''
+      ? (horario.style.border = '2px solid #FE5E5E')
+      : (horario.style.border = '2px solid #999')
   })
 
   //Ejecutar la siguiente funcion
@@ -860,32 +852,27 @@ function actualizarTabla() {
     ) {
       //Recorro los equipos y aumento, y al correspondiente, su victoria
       for (let y = 0; y < equipos.length; y++) {
-        if (partidosTerminados[i].equipoLocalName === equipos[y].equipo) {
+        partidosTerminados[i].equipoLocalName === equipos[y].equipo &&
           equipos[y].victorias++
-        }
       }
       //Recorro los equipos y aumento, y al correspondiente, su derrota
       for (let y = 0; y < equipos.length; y++) {
-        if (partidosTerminados[i].equipoVisitanteName === equipos[y].equipo) {
+        partidosTerminados[i].equipoVisitanteName === equipos[y].equipo &&
           equipos[y].derrotas++
-        }
       }
-
       //Comparo los puntos de cada equipo
     } else if (
       partidosTerminados[i].puntosLocal < partidosTerminados[i].puntosVisitante
     ) {
       //Recorro los equipos y aumento, y al correspondiente, su victoria
       for (let y = 0; y < equipos.length; y++) {
-        if (partidosTerminados[i].equipoVisitanteName === equipos[y].equipo) {
+        partidosTerminados[i].equipoVisitanteName === equipos[y].equipo &&
           equipos[y].victorias++
-        }
       }
       //Recorro los equipos y aumento, y al correspondiente, su derrota
       for (let y = 0; y < equipos.length; y++) {
-        if (partidosTerminados[i].equipoLocalName === equipos[y].equipo) {
+        partidosTerminados[i].equipoLocalName === equipos[y].equipo &&
           equipos[y].derrotas++
-        }
       }
     }
   }
