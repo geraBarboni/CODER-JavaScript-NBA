@@ -1,10 +1,251 @@
 let partidosAJugar = []
+let resultadosDefinidosIndexLS = []
+let tablaOrdenada = []
+let equipos = [
+  {
+    equipo: 'Atlanta Hawks',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'atlanta',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Boston Celtics',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'boston',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Brooklyn Nets',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'brooklyn',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Charlotte Hornets',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'charlotte',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Chicago Bulls',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'chicago',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Cleveland Cavaliers',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'cleveland',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Dallas Maverics',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'dallas',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Denver Nuggets',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'denver',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Detroit Pistons',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'detroit',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Golden State Warriors',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'goldenstate',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Houston Rockets',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'houston',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Indiana Pacers',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'indiana',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Los Angeles Lakers',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'losangelesl',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Los Angeles Clippers',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'losangelesc',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Memphis Grizzles',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'memphis',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Miami Heat',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'miami',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Milwaukee Bucks',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'milwaukee',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Minnesota Tomberwolvers',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'minnesota',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'New Orleans Pelicans',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'neworleans',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'New Yorks Knicks',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'newyork',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Ocklahoma City Thunder',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'ocklahoma',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Orlando Magic',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'orlando',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Philadelphia 76s',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'philadelphia',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Phoenix Suns',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'phoenix',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Portland Trailblazers',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'portland',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Sacramento Kings',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'sacramento',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'San Antonio Spurs',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'sanantonio',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Toronto Raptors',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'toronto',
+    conferencia: 'Este',
+  },
+  {
+    equipo: 'Utha Jazz',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'utha',
+    conferencia: 'Oeste',
+  },
+  {
+    equipo: 'Washington Wizzars',
+    victorias: 0,
+    derrotas: 0,
+    imagen: 'washington',
+    conferencia: 'Este',
+  },
+]
+let equiposLS = []
+
+function onload() {
+  //LOCALSTORAGE
+  eventoReconocerLocalStoragePartidosAJugar()
+  eventoReconocerLocalStoragePartidosTerminados()
+  eventoReconocerLocalStorageEquipos()
+
+  //MOSTRAR EN PANTALLA
+  mostrarPartidosDelDia()
+  mostrarResultadosindex()
+}
+
+onload()
 
 function eventoReconocerLocalStoragePartidosAJugar() {
   partidosAJugar = JSON.parse(localStorage.getItem('partidosAJugar'))
   if (partidosAJugar == null) {
     partidosAJugar = []
     localStorage.setItem('partidosAJugar', JSON.stringify(partidosAJugar))
+  }
+}
+
+function eventoReconocerLocalStoragePartidosTerminados() {
+  resultadosDefinidosIndexLS = JSON.parse(
+    localStorage.getItem('partidosTerminados'),
+  )
+  if (resultadosDefinidosIndexLS === null) {
+    resultadosDefinidosIndexLS = []
+    localStorage.setItem(
+      'partidosTerminados',
+      JSON.stringify(resultadosDefinidosIndexLS),
+    )
   }
 }
 
@@ -15,6 +256,33 @@ function eventoReconocerLocalStorageEquipos() {
     equiposLS = equipos
     localStorage.setItem('equiposLS', JSON.stringify(equiposLS))
     console.log(equiposLS)
+  }
+}
+
+//4. MOSTRAR PARTIDOS
+function mostrarPartidosDelDia() {
+  //Tomo el div donde se mostraran las cards
+  let partidosDelDia = document.getElementById('partidosDelDia')
+
+  //Si el div esta ocupado, lo limpio, para evitar que se repitan las cards cada vez que ejecuto la funcion
+  partidosDelDia.innerHTML = ''
+
+  //Recorro el array de partidos a jugar y por cada ciclo agrego una card con la informacion correspondiente
+  for (let i = 0; i < partidosAJugar.length; i++) {
+    partidosDelDia.innerHTML += `
+    <div class="card p-3 my-2 shadow">
+    <div class="row">
+      <div class="col-4">
+        <img class="img-fluid" src="../img/${partidosAJugar[i].equipoLocalValue}.png" alt="" />
+      </div>
+      <div class="col-4 m-auto">
+        <p class="text-center m-auto">${partidosAJugar[i].horario}</p>
+      </div>
+      <div class="col-4">
+        <img class="img-fluid" src="../img/${partidosAJugar[i].equipoVisitanteValue}.png" alt="" />
+      </div>
+    </div>
+    `
   }
 }
 
@@ -78,38 +346,9 @@ function mostrarResultadosindex() {
           `
     }
   }
+
+  ordenarTabla()
 }
-
-mostrarResultadosindex()
-
-//4. MOSTRAR PARTIDOS
-function mostrarPartidosDelDia() {
-  eventoReconocerLocalStoragePartidosAJugar()
-  //Tomo el div donde se mostraran las cards
-  let partidosDelDia = document.getElementById('partidosDelDia')
-
-  //Si el div esta ocupado, lo limpio, para evitar que se repitan las cards cada vez que ejecuto la funcion
-  partidosDelDia.innerHTML = ''
-
-  //Recorro el array de partidos a jugar y por cada ciclo agrego una card con la informacion correspondiente
-  for (let i = 0; i < partidosAJugar.length; i++) {
-    partidosDelDia.innerHTML += `
-    <div class="card p-3 my-2 shadow">
-    <div class="row">
-      <div class="col-4">
-        <img class="img-fluid" src="../img/${partidosAJugar[i].equipoLocalValue}.png" alt="" />
-      </div>
-      <div class="col-4 m-auto">
-        <p class="text-center m-auto">${partidosAJugar[i].horario}</p>
-      </div>
-      <div class="col-4">
-        <img class="img-fluid" src="../img/${partidosAJugar[i].equipoVisitanteValue}.png" alt="" />
-      </div>
-    </div>
-    `
-  }
-}
-mostrarPartidosDelDia()
 
 function ordenarTabla() {
   equiposLS = JSON.parse(localStorage.getItem('equiposLS'))
@@ -152,5 +391,3 @@ function mostrarTabla() {
     `
   }
 }
-
-ordenarTabla()

@@ -388,6 +388,7 @@ function onload() {
 
   //MOSTRAR EN PANTALLA
   mostrarPartidosDelDia()
+  mostrarResultados()
 }
 
 //Ejecuto la funcion para escuhar los eventos
@@ -849,6 +850,8 @@ function mostrarResultados() {
 
 //4. ACTUALIZO LA TABLA
 function actualizarTabla() {
+  equiposLS = equipos
+  partidosTerminados = JSON.parse(localStorage.getItem('partidosTerminados'))
   //Recorro los partidos terminados
   for (let i = 0; i < partidosTerminados.length; i++) {
     //Comparo los puntos de cada equipo
@@ -898,6 +901,7 @@ function ordenarTabla() {
   //Ordeno a los equipos por victorias conseguidas, y le asigno esos objetos ordenados al array "tablaOrdenada"
   tablaOrdenada = equiposLS.sort((a, b) => a.victorias < b.victorias)
   //Una vez ordenados, ejecuto la funcion que muestra la tabla en pantalla
+
   mostrarTabla()
 }
 
