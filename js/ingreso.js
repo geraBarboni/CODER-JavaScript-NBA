@@ -19,14 +19,16 @@ function ingresar() {
   if (usuario === 'usuario' && contraseña === '123123') {
     location.href = '../sections/admin.html'
   } else {
-    alert.innerHTML += `
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>Usuario</strong>
-     o 
-    <strong>contraseña</strong>
-    incorrectos
-     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  `
+    return Toastify({
+      text: `Usuario o contraseña incorrectos`,
+      duration: 3000,
+      gravity: 'top',
+      position: 'left',
+      stopOnFocus: true,
+      style: {
+        background:
+          'linear-gradient(135deg, rgba(191,5,5,1) 0%, rgba(175,0,0,1) 27%, rgba(255,0,108,1) 80%)',
+      },
+    }).showToast()
   }
 }

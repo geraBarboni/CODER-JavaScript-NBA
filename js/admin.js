@@ -495,63 +495,81 @@ function corroborarPartidoACrear() {
   //Corroboro que los equipos no juegen en el dia
   for (let i = 0; i < partidosAJugar.length; i++) {
     if (partidosAJugar[i].equipoLocalName === equipoLocalText) {
-      return (alert.innerHTML += `
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-       El equipo 
-      <strong>${equipoLocalText}</strong>
-      ya juega en el dia.
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      `)
+      return Toastify({
+        text: `El equipo ${equipoLocalText} ya juega en el dia.`,
+        duration: 3000,
+        gravity: 'top',
+        position: 'left',
+        stopOnFocus: true,
+        style: {
+          background:
+            'linear-gradient(135deg, rgba(191,5,5,1) 0%, rgba(175,0,0,1) 27%, rgba(255,0,108,1) 80%)',
+        },
+      }).showToast()
     } else if (partidosAJugar[i].equipoLocalName === equipoVisitanteText) {
-      return (alert.innerHTML += `
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-       El equipo 
-      <strong>${equipoLocalText}</strong>
-      ya juega en el dia.
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      `)
+      return Toastify({
+        text: `El equipo ${equipoLocalText} ya juega en el dia.`,
+        duration: 3000,
+        gravity: 'top',
+        position: 'left',
+        stopOnFocus: true,
+        style: {
+          background:
+            'linear-gradient(135deg, rgba(191,5,5,1) 0%, rgba(175,0,0,1) 27%, rgba(255,0,108,1) 80%)',
+        },
+      }).showToast()
     } else if (partidosAJugar[i].equipoVisitanteName === equipoLocalText) {
-      return (alert.innerHTML += `
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-       El equipo 
-      <strong>${equipoVisitanteText}</strong>
-      ya juega en el dia.
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      `)
+      return Toastify({
+        text: `El equipo ${equipoVisitanteText} ya juega en el dia.`,
+        duration: 3000,
+        gravity: 'top',
+        position: 'left',
+        stopOnFocus: true,
+        style: {
+          background:
+            'linear-gradient(135deg, rgba(191,5,5,1) 0%, rgba(175,0,0,1) 27%, rgba(255,0,108,1) 80%)',
+        },
+      }).showToast()
     } else if (partidosAJugar[i].equipoVisitanteName === equipoVisitanteText) {
-      return (alert.innerHTML += `
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-       El equipo 
-      <strong>${equipoVisitanteText}</strong>
-      ya juega en el dia.
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      `)
+      return Toastify({
+        text: `El equipo ${equipoVisitanteText} ya juega en el dia.`,
+        duration: 3000,
+        gravity: 'top',
+        position: 'left',
+        stopOnFocus: true,
+        style: {
+          background:
+            'linear-gradient(135deg, rgba(191,5,5,1) 0%, rgba(175,0,0,1) 27%, rgba(255,0,108,1) 80%)',
+        },
+      }).showToast()
     }
   }
 
   //Corroboro que no se elijan los mismos equipos para que compitan entre ellos
   if (equipoLocalValue === equipoVisitanteValue) {
-    return (alert.innerHTML += `
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Los equipos 
-        <strong>${equipoLocalText}</strong>
-        y 
-        <strong>${equipoVisitanteText}</strong> son los mismos, por favor elija dos equipos distintos
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        `)
+    return Toastify({
+      text: `Los equipos ${equipoLocalText} y ${equipoVisitanteText} son los mismos, por favor elija dos equipos distintos.`,
+      duration: 3000,
+      gravity: 'top',
+      position: 'left',
+      stopOnFocus: true,
+      style: {
+        background:
+          'linear-gradient(135deg, rgba(191,5,5,1) 0%, rgba(175,0,0,1) 27%, rgba(255,0,108,1) 80%)',
+      },
+    }).showToast()
   } else if (horario === '') {
-    return (alert.innerHTML += `
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Por favor, ingrese un 
-        <strong>horario</strong>.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        `)
+    return Toastify({
+      text: `Por favor, ingrese un horario.`,
+      duration: 3000,
+      gravity: 'top',
+      position: 'left',
+      stopOnFocus: true,
+      style: {
+        background:
+          'linear-gradient(135deg, rgba(191,5,5,1) 0%, rgba(175,0,0,1) 27%, rgba(255,0,108,1) 80%)',
+      },
+    }).showToast()
   }
 
   //Una vez pasadas todas las pruebas, llamo a funcion partidoNuevo y le paso los valores obtenidos
@@ -730,7 +748,19 @@ function asignarResultados() {
     ).value
 
     //Compruebo si el usuario ingreso todos los resultados de todos los partidos
-    if (puntosLocal != '0' && puntosVisitante != '0') {
+    if (puntosLocal === puntosVisitante) {
+      return Toastify({
+        text: `Los equipos ${partidosAJugar[i].equipoLocalName} y ${partidosAJugar[i].equipoVisitanteName} estan empatados, por favor ingrese correctamente los puntos de cada equipo.`,
+        duration: 3000,
+        gravity: 'top',
+        position: 'left',
+        stopOnFocus: true,
+        style: {
+          background:
+            'linear-gradient(135deg, rgba(191,5,5,1) 0%, rgba(175,0,0,1) 27%, rgba(255,0,108,1) 80%)',
+        },
+      }).showToast()
+    } else if (puntosLocal != '0' && puntosVisitante != '0') {
       //Asigno los valores de las variables creadas anteriormente, a los datos correspondientes del objeto
       partidosAJugar[i].puntosLocal = puntosLocal
       partidosAJugar[i].puntosVisitante = puntosVisitante
@@ -750,20 +780,6 @@ function asignarResultados() {
       partidosTerminados.reverse()
 
       //Compruebo si algun partido presenta una igualdad de puntos
-    } else if (
-      puntosLocal == puntosVisitante &&
-      puntosLocal != '0' &&
-      puntosVisitante != '0'
-    ) {
-      alert.innerHTML += `
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      Los equipos 
-      <strong>${partidosAJugar[i].equipoLocalName}</strong>
-      y 
-      <strong>${partidosAJugar[i].equipoVisitanteName}</strong> estan empatados, por favor ingrese correctamente los puntos de cada equipo
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      `
     }
   }
 
