@@ -79,21 +79,40 @@
       </div>
     </nav>
 
-    <div class="row bg-light login">
-      <div class="col-12 col-md-6 m-auto">
-        <div class="p-md-5">
-          <img src="../img/logo.png" alt="" class="img-fluid px-5" />
+    <div class="row bg-light">
+      <div class="col-12 col-md-4">
+        <p class="fs-4 text-center my-3">Partidos del dia</p>
+        <div id="partidosDelDia">
+          <!--Acá van los partidos del dia con sus respectivos horarios-->
         </div>
-        <form>
-          <input type="text" id="usuario" class="form-control my-2" />
-          <input type="password" id="pass" class="form-control my-2" />
-          <div class="d-grid gap-2">
-            <button type="button" class="btn btn-dark my-2" id="ingresar">
-              Ingresar
-            </button>
+      </div>
+      <div class="col-12 col-md-4">
+        <p class="fs-4 text-center my-3">Resultados</p>
+        <div id="resultadosDefinidosIndex">
+          <!--Acá van los partidos del dia con sus resultados definidos-->
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="tablaGeneral">
+          <p class="fs-4 text-center my-3">Tabla de posiciones general</p>
+          <div class="card p-3 my-2 shadow cabecera">
+            <div class="row">
+              <div class="col-3 m-auto">
+                <p class="text-center m-auto">#</p>
+              </div>
+              <div class="col-3">
+                <p class="text-center m-auto">Equipo</p>
+              </div>
+              <div class="col-3 m-auto">
+                <p class="text-center m-auto">Ganados</p>
+              </div>
+              <div class="col-3 m-auto">
+                <p class="text-center m-auto">Perdidos</p>
+              </div>
+            </div>
           </div>
-        </form>
-        <div id="alerts"></div>
+          <div id="tablaDePosiciones"></div>
+        </div>
       </div>
     </div>
 
@@ -102,7 +121,6 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-
-    <script src="../js/ingreso.js"></script>
+    <script src="../js/index.js"></script>
   </body>
 </html>

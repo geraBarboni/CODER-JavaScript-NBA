@@ -121,6 +121,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'atlanta',
     conferencia: 'Este',
+    TeamId: 3,
   },
   {
     equipo: 'Boston Celtics',
@@ -128,6 +129,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'boston',
     conferencia: 'Este',
+    TeamId: 9,
   },
   {
     equipo: 'Brooklyn Nets',
@@ -135,6 +137,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'brooklyn',
     conferencia: 'Este',
+    TeamId: 8,
   },
   {
     equipo: 'Charlotte Hornets',
@@ -142,6 +145,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'charlotte',
     conferencia: 'Este',
+    TeamId: 2,
   },
   {
     equipo: 'Chicago Bulls',
@@ -149,6 +153,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'chicago',
     conferencia: 'Este',
+    TeamId: 11,
   },
   {
     equipo: 'Cleveland Cavaliers',
@@ -156,6 +161,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'cleveland',
     conferencia: 'Este',
+    TeamId: 12,
   },
   {
     equipo: 'Dallas Maverics',
@@ -163,6 +169,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'dallas',
     conferencia: 'Oeste',
+    TeamId: 25,
   },
   {
     equipo: 'Denver Nuggets',
@@ -170,6 +177,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'denver',
     conferencia: 'Oeste',
+    TeamId: 20,
   },
   {
     equipo: 'Detroit Pistons',
@@ -177,6 +185,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'detroit',
     conferencia: 'Este',
+    TeamId: 14,
   },
   {
     equipo: 'Golden State Warriors',
@@ -184,6 +193,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'goldenstate',
     conferencia: 'Oeste',
+    TeamId: 26,
   },
   {
     equipo: 'Houston Rockets',
@@ -191,6 +201,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'houston',
     conferencia: 'Oeste',
+    TeamId: 22,
   },
   {
     equipo: 'Indiana Pacers',
@@ -198,6 +209,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'indiana',
     conferencia: 'Este',
+    TeamId: 13,
   },
   {
     equipo: 'Los Angeles Lakers',
@@ -205,6 +217,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'losangelesl',
     conferencia: 'Oeste',
+    TeamId: 27,
   },
   {
     equipo: 'Los Angeles Clippers',
@@ -212,6 +225,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'losangelesc',
     conferencia: 'Oeste',
+    TeamId: 28,
   },
   {
     equipo: 'Memphis Grizzles',
@@ -219,6 +233,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'memphis',
     conferencia: 'Oeste',
+    TeamId: 21,
   },
   {
     equipo: 'Miami Heat',
@@ -226,6 +241,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'miami',
     conferencia: 'Este',
+    TeamId: 4,
   },
   {
     equipo: 'Milwaukee Bucks',
@@ -233,6 +249,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'milwaukee',
     conferencia: 'Este',
+    TeamId: 15,
   },
   {
     equipo: 'Minnesota Tomberwolvers',
@@ -240,6 +257,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'minnesota',
     conferencia: 'Oeste',
+    TeamId: 16,
   },
   {
     equipo: 'New Orleans Pelicans',
@@ -247,6 +265,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'neworleans',
     conferencia: 'Oeste',
+    TeamId: 23,
   },
   {
     equipo: 'New Yorks Knicks',
@@ -254,6 +273,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'newyork',
     conferencia: 'Este',
+    TeamId: 6,
   },
   {
     equipo: 'Ocklahoma City Thunder',
@@ -261,6 +281,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'ocklahoma',
     conferencia: 'Oeste',
+    TeamId: 18,
   },
   {
     equipo: 'Orlando Magic',
@@ -268,6 +289,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'orlando',
     conferencia: 'Este',
+    TeamId: 5,
   },
   {
     equipo: 'Philadelphia 76s',
@@ -275,6 +297,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'philadelphia',
     conferencia: 'Este',
+    TeamId: 7,
   },
   {
     equipo: 'Phoenix Suns',
@@ -282,6 +305,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'phoenix',
     conferencia: 'Oeste',
+    TeamId: 29,
   },
   {
     equipo: 'Portland Trailblazers',
@@ -289,6 +313,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'portland',
     conferencia: 'Oeste',
+    TeamId: 19,
   },
   {
     equipo: 'Sacramento Kings',
@@ -296,6 +321,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'sacramento',
     conferencia: 'Oeste',
+    TeamId: 30,
   },
   {
     equipo: 'San Antonio Spurs',
@@ -303,6 +329,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'sanantonio',
     conferencia: 'Oeste',
+    TeamId: 24,
   },
   {
     equipo: 'Toronto Raptors',
@@ -310,6 +337,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'toronto',
     conferencia: 'Este',
+    id: 10,
   },
   {
     equipo: 'Utha Jazz',
@@ -317,6 +345,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'utha',
     conferencia: 'Oeste',
+    TeamId: 17,
   },
   {
     equipo: 'Washington Wizzars',
@@ -324,6 +353,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'washington',
     conferencia: 'Este',
+    TeamId: 1,
   },
 ]
 

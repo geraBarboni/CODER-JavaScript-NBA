@@ -24,63 +24,64 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
     <title>Proyecto Final JavaScript</title>
   </head>
-  <body class="container-fluid bg-light">
-    <nav class="navbar navbar-light bg-light">
+  <body class="container-fluid bg-light" id="index">
+    <nav class="navbar navbar-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="./index.html">
           <img src="./img/logo.png" alt="" />
         </a>
         <div class="d-flex">
-          <a href="./sections/admin.html" class="mx-4">
-            <button class="btn btn-outline-dark" type="submit">
-              admin
-            </button>
-          </a>
           <a href="./sections/ingreso.html">
-            <button class="btn btn-outline-dark" type="submit">
+            <button class="btn btn-outline-light" type="submit">
               <i class="bi bi-person"></i>
             </button>
           </a>
         </div>
       </div>
     </nav>
-    <div class="row bg-light">
-      <div class="col-12 col-md-4">
-        <p class="fs-4 text-center my-3">Partidos del dia</p>
-        <div id="partidosDelDia">
-          <!--Acá van los partidos del dia con sus respectivos horarios-->
-        </div>
+    <div class="row">
+      <div class="col-md-6 col-12 left">
+        <h1>Toda la info de la NBA en un solo lugar</h1>
       </div>
-      <div class="col-12 col-md-4">
-        <p class="fs-4 text-center my-3">Resultados</p>
-        <div id="resultadosDefinidosIndex">
-          <!--Acá van los partidos del dia con sus resultados definidos-->
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="tablaGeneral">
-          <p class="fs-4 text-center my-3">Tabla de posiciones general</p>
-          <div class="card p-3 my-2 shadow cabecera">
-            <div class="row">
-              <div class="col-3 m-auto">
-                <p class="text-center m-auto">#</p>
-              </div>
-              <div class="col-3">
-                <p class="text-center m-auto">Equipo</p>
-              </div>
-              <div class="col-3 m-auto">
-                <p class="text-center m-auto">Ganados</p>
-              </div>
-              <div class="col-3 m-auto">
-                <p class="text-center m-auto">Perdidos</p>
-              </div>
-            </div>
+      <div class="col-md-6 col-12 right">
+        <div class="buttons">
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <a
+              href="./sections/informacion.html"
+              class="btn btn-light"
+              type="button"
+            >
+              partidos del dia
+            </a>
+            <a
+              href="./sections/informacion.html"
+              class="btn btn-light"
+              type="button"
+            >
+              tabla de posiciones
+            </a>
+            <a
+              href="./sections/lesionados.html"
+              class="btn btn-light"
+              type="button"
+            >
+              lesionados
+            </a>
+            <a href="./sections/admin.html" class="btn btn-light" type="button">
+              panel del administrador
+            </a>
           </div>
-          <div id="tablaDePosiciones"></div>
         </div>
       </div>
     </div>

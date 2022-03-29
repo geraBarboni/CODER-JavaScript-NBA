@@ -8,6 +8,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'atlanta',
     conferencia: 'Este',
+    TeamId: 3,
   },
   {
     equipo: 'Boston Celtics',
@@ -15,6 +16,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'boston',
     conferencia: 'Este',
+    TeamId: 9,
   },
   {
     equipo: 'Brooklyn Nets',
@@ -22,6 +24,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'brooklyn',
     conferencia: 'Este',
+    TeamId: 8,
   },
   {
     equipo: 'Charlotte Hornets',
@@ -29,6 +32,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'charlotte',
     conferencia: 'Este',
+    TeamId: 2,
   },
   {
     equipo: 'Chicago Bulls',
@@ -36,6 +40,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'chicago',
     conferencia: 'Este',
+    TeamId: 11,
   },
   {
     equipo: 'Cleveland Cavaliers',
@@ -43,6 +48,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'cleveland',
     conferencia: 'Este',
+    TeamId: 12,
   },
   {
     equipo: 'Dallas Maverics',
@@ -50,6 +56,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'dallas',
     conferencia: 'Oeste',
+    TeamId: 25,
   },
   {
     equipo: 'Denver Nuggets',
@@ -57,6 +64,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'denver',
     conferencia: 'Oeste',
+    TeamId: 20,
   },
   {
     equipo: 'Detroit Pistons',
@@ -64,6 +72,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'detroit',
     conferencia: 'Este',
+    TeamId: 14,
   },
   {
     equipo: 'Golden State Warriors',
@@ -71,6 +80,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'goldenstate',
     conferencia: 'Oeste',
+    TeamId: 26,
   },
   {
     equipo: 'Houston Rockets',
@@ -78,6 +88,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'houston',
     conferencia: 'Oeste',
+    TeamId: 22,
   },
   {
     equipo: 'Indiana Pacers',
@@ -85,6 +96,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'indiana',
     conferencia: 'Este',
+    TeamId: 13,
   },
   {
     equipo: 'Los Angeles Lakers',
@@ -92,6 +104,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'losangelesl',
     conferencia: 'Oeste',
+    TeamId: 27,
   },
   {
     equipo: 'Los Angeles Clippers',
@@ -99,6 +112,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'losangelesc',
     conferencia: 'Oeste',
+    TeamId: 28,
   },
   {
     equipo: 'Memphis Grizzles',
@@ -106,6 +120,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'memphis',
     conferencia: 'Oeste',
+    TeamId: 21,
   },
   {
     equipo: 'Miami Heat',
@@ -113,6 +128,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'miami',
     conferencia: 'Este',
+    TeamId: 4,
   },
   {
     equipo: 'Milwaukee Bucks',
@@ -120,6 +136,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'milwaukee',
     conferencia: 'Este',
+    TeamId: 15,
   },
   {
     equipo: 'Minnesota Tomberwolvers',
@@ -127,6 +144,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'minnesota',
     conferencia: 'Oeste',
+    TeamId: 16,
   },
   {
     equipo: 'New Orleans Pelicans',
@@ -134,6 +152,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'neworleans',
     conferencia: 'Oeste',
+    TeamId: 23,
   },
   {
     equipo: 'New Yorks Knicks',
@@ -141,6 +160,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'newyork',
     conferencia: 'Este',
+    TeamId: 6,
   },
   {
     equipo: 'Ocklahoma City Thunder',
@@ -148,6 +168,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'ocklahoma',
     conferencia: 'Oeste',
+    TeamId: 18,
   },
   {
     equipo: 'Orlando Magic',
@@ -155,6 +176,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'orlando',
     conferencia: 'Este',
+    TeamId: 5,
   },
   {
     equipo: 'Philadelphia 76s',
@@ -162,6 +184,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'philadelphia',
     conferencia: 'Este',
+    TeamId: 7,
   },
   {
     equipo: 'Phoenix Suns',
@@ -169,6 +192,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'phoenix',
     conferencia: 'Oeste',
+    TeamId: 29,
   },
   {
     equipo: 'Portland Trailblazers',
@@ -176,6 +200,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'portland',
     conferencia: 'Oeste',
+    TeamId: 19,
   },
   {
     equipo: 'Sacramento Kings',
@@ -183,6 +208,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'sacramento',
     conferencia: 'Oeste',
+    TeamId: 30,
   },
   {
     equipo: 'San Antonio Spurs',
@@ -190,6 +216,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'sanantonio',
     conferencia: 'Oeste',
+    TeamId: 24,
   },
   {
     equipo: 'Toronto Raptors',
@@ -197,6 +224,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'toronto',
     conferencia: 'Este',
+    id: 10,
   },
   {
     equipo: 'Utha Jazz',
@@ -204,6 +232,7 @@ let equipos = [
     derrotas: 0,
     imagen: 'utha',
     conferencia: 'Oeste',
+    TeamId: 17,
   },
   {
     equipo: 'Washington Wizzars',
@@ -211,11 +240,15 @@ let equipos = [
     derrotas: 0,
     imagen: 'washington',
     conferencia: 'Este',
+    TeamId: 1,
   },
 ]
 let equiposLS = []
-
+let json = []
 function onload() {
+  //LLAMADA A API
+  estadisticasAPI()
+
   //LOCALSTORAGE
   eventoReconocerLocalStoragePartidosAJugar()
   eventoReconocerLocalStoragePartidosTerminados()
@@ -225,7 +258,6 @@ function onload() {
   mostrarPartidosDelDia()
   mostrarResultadosindex()
 }
-
 onload()
 
 function eventoReconocerLocalStoragePartidosAJugar() {
@@ -370,7 +402,7 @@ function mostrarTabla() {
   //Recorro el array "tablaOrdenada" y por cada ciclo muestro una card con el orden correspondiente
   for (let i = 0; i < tablaOrdenada.length; i++) {
     tablaDePosiciones.innerHTML += `
-    <div class="card p-3 my-2 shadow">
+    <div class="card p-3 my-2 shadow" id='${tablaOrdenada[i].TeamId}' >
     <div class="row">
       <div class="col-3 m-auto">
         <p class="text-center m-auto">${i + 1}</p>
@@ -387,7 +419,62 @@ function mostrarTabla() {
         <p class="text-center m-auto">${tablaOrdenada[i].derrotas}</p>
       </div>
     </div>
+    <div class="shadow stats" id="stats${tablaOrdenada[i].TeamId}">
+
+  </div>
   </div>
     `
+  }
+}
+
+//Llamo a la API
+async function estadisticasAPI() {
+  try {
+    let response = await fetch(
+      'https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/2022?key=8511bfc544294db6b0c8aec24806f54f',
+    )
+    json = await response.json()
+    //console.log(json)
+  } catch (err) {
+    console.log('Error ==> ', err)
+  }
+  //Una vez caegada la API puedo usar los eventos
+  asignarEventoMostrarModal()
+}
+
+//Asigno los eventos a cada card
+function asignarEventoMostrarModal() {
+  for (let i = 0; i < tablaOrdenada.length; i++) {
+    let card = document.getElementById(tablaOrdenada[i].TeamId)
+    let modalCard = document.getElementById('stats' + tablaOrdenada[i].TeamId)
+
+    card.addEventListener('click', () => {
+      let equipoStat = json.filter(
+        (team) => team.OpponentStat.TeamID === tablaOrdenada[i].TeamId,
+      )
+
+      modalCard.style.display = 'flex'
+      modalCard.innerHTML = ''
+      modalCard.innerHTML += `
+      <div>
+      <strong>${equipoStat[0].Name}</strong>
+      <br />
+      <span>PPP: ${(equipoStat[0].Points / equipoStat[0].Games).toFixed(
+        2,
+      )}</span>
+      <br />
+      <span>RPP: ${(equipoStat[0].Rebounds / equipoStat[0].Games).toFixed(
+        2,
+      )}</span>
+      <br />
+      <span>APP: ${(equipoStat[0].Assists / equipoStat[0].Games).toFixed(
+        2,
+      )}</span>
+    </div>
+      `
+    })
+    card.addEventListener('mouseout', () => {
+      modalCard.style.display = 'none'
+    })
   }
 }

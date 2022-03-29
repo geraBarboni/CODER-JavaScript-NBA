@@ -78,31 +78,44 @@
         </div>
       </div>
     </nav>
-
-    <div class="row bg-light login">
-      <div class="col-12 col-md-6 m-auto">
-        <div class="p-md-5">
-          <img src="../img/logo.png" alt="" class="img-fluid px-5" />
-        </div>
-        <form>
-          <input type="text" id="usuario" class="form-control my-2" />
-          <input type="password" id="pass" class="form-control my-2" />
-          <div class="d-grid gap-2">
-            <button type="button" class="btn btn-dark my-2" id="ingresar">
-              Ingresar
-            </button>
+    <div class="row bg-light" id="lesionados">
+      <div class="col-12">
+        <div class="tablaLesionados">
+          <p class="fs-4 text-center my-3">Jugadores Lesionados</p>
+          <div class="card p-3 my-2 shadow cabecera">
+            <div class="row">
+              <div class="col-3 m-auto">
+                <p class="text-center m-auto">Jugador</p>
+              </div>
+              <div class="col-4 col-md-3">
+                <p class="text-center m-auto">Nombre</p>
+              </div>
+              <div class="col-3 m-auto">
+                <p class="text-center m-auto">Equipo</p>
+              </div>
+              <div class="col-1 m-auto d-none d-md-block">
+                <p class="text-center m-auto">#</p>
+              </div>
+              <div class="col-2 m-auto">
+                <p class="text-center m-auto">Posicion</p>
+              </div>
+            </div>
           </div>
-        </form>
-        <div id="alerts"></div>
+          <div id="jugadoresLesionados">
+            <div class="d-flex justify-content-center">
+              <div class="spinner-grow m-5" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-
-    <script src="../js/ingreso.js"></script>
+    <script src="../js/lesionados.js"></script>
   </body>
 </html>

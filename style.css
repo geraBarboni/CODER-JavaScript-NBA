@@ -42,3 +42,78 @@
   position: absolute;
   z-index: 99;
 }
+/*--------------------------------------------------------------------INDEX*/
+.stats {
+  display: none;
+  position: absolute;
+  z-index: 99;
+  border-radius: 10px;
+  height: 150px;
+  width: 150px;
+  padding: 20px;
+  background-color: white;
+}
+.stats div {
+  margin: auto;
+}
+/*--------------------------------------------------------------------LESIONADOS*/
+.imgPJ {
+  height: 50px;
+}
+/*--------------------------------------------------------------------INDEX*/
+.left {
+  height: 87vh;
+  display: flex;
+}
+h1 {
+  font-weight: 800;
+  font-size: 68px;
+  margin: auto;
+  margin-left: 70px;
+  color: aliceblue;
+}
+.right {
+  height: 87vh;
+  display: flex;
+}
+.buttons {
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+#index {
+  background-image: url('img/background.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media (max-width: 576px) {
+  /*--------------------------------------------------------------------INDEX*/
+  #index {
+    background-image: url('img/background.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }
+  .left {
+    height: auto;
+    display: flex;
+  }
+  h1 {
+    font-weight: 800;
+    font-size: 68px;
+    margin: 20px;
+    color: aliceblue;
+    padding: 0;
+  }
+  .right {
+    height: 38vh;
+    display: flex;
+  }
+  .buttons {
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
