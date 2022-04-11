@@ -407,14 +407,14 @@ let alert = document.getElementById('alerts')
 
 //1.ASIGNAR EVENTOS
 function onload() {
-  //BOTONES
-  eventoBotonAgregar()
-  eventoBotonActualizar()
-
   //LOCALSTORAGE
   eventoReconocerLocalStoragePartidosAJugar()
   eventoReconocerLocalStoragePartidosTerminados()
   eventoReconocerLocalStorageEquipos()
+
+  //BOTONES
+  eventoBotonAgregar()
+  eventoBotonActualizar()
 
   //MOSTRAR EN PANTALLA
   mostrarPartidosDelDia()
@@ -656,6 +656,12 @@ function mostrarPartidosDelDia() {
   //Si el div esta ocupado, lo limpio, para evitar que se repitan las cards cada vez que ejecuto la funcion
   partidosDelDia.innerHTML = ''
 
+  if (partidosAJugar.length === 0) {
+    partidosDelDia.innerHTML += `
+    <p class="text-center">No hay partidos programados en el dia</p>
+    `
+  }
+
   //Recorro el array de partidos a jugar y por cada ciclo agrego una card con la informacion correspondiente
   for (let i = 0; i < partidosAJugar.length; i++) {
     partidosDelDia.innerHTML += `
@@ -713,6 +719,12 @@ function partidosDelDiaNoDefinidos() {
   //Si el <div> esta siendo usado, lo limpio para evitar que se repitan las cards
   resultadosDelDiaNoDefinidos.innerHTML = ''
 
+  if (partidosAJugar.length === 0) {
+    resultadosDelDiaNoDefinidos.innerHTML += `
+    <p class="text-center">No hay partidos a definir en el dia</p>
+    `
+  }
+
   //Recorro el array "partidosAJugar" y muestro las cards correspondientes a cada partido. Cada card usa el id del partido para tener una referencia en el caso que se necesite editar
   //Ademas, cada input tiene un id (creado con el id del partido y el nombre del equipo), para luego obtener los valores ingresados
   for (let i = 0; i < partidosAJugar.length; i++) {
@@ -725,14 +737,14 @@ function partidosDelDiaNoDefinidos() {
             }.png" alt="" />
           </div>
           <div class="col-3 m-auto">
-            <input type="text" name="" id="${
+            <input type="number" name="" id="${
               partidosAJugar[i].id + partidosAJugar[i].equipoLocalValue
             }" class="form-control asignarResultado" value="${
       partidosAJugar[i].puntosLocal
     }"/>
           </div>
           <div class="col-3 m-auto">
-            <input type="text" name="" id="${
+            <input type="number" name="" id="${
               partidosAJugar[i].id + partidosAJugar[i].equipoVisitanteValue
             }" class="form-control asignarResultado" value="${
       partidosAJugar[i].puntosVisitante
@@ -768,14 +780,18 @@ function asignarResultados() {
     //De cada rival, tomo los puntos, provenientes del input de las cards creadas
 
     //Puntos del local
-    let puntosLocal = document.getElementById(
-      partidosAJugar[i].id + partidosAJugar[i].equipoLocalValue,
-    ).value
+    let puntosLocal = parseInt(
+      document.getElementById(
+        partidosAJugar[i].id + partidosAJugar[i].equipoLocalValue,
+      ).value,
+    )
 
     //Puntos del visitante
-    let puntosVisitante = document.getElementById(
-      partidosAJugar[i].id + partidosAJugar[i].equipoVisitanteValue,
-    ).value
+    let puntosVisitante = parseInt(
+      document.getElementById(
+        partidosAJugar[i].id + partidosAJugar[i].equipoVisitanteValue,
+      ).value,
+    )
 
     //Compruebo si el usuario ingreso todos los resultados de todos los partidos
     if (puntosLocal === puntosVisitante) {
@@ -790,7 +806,7 @@ function asignarResultados() {
             'linear-gradient(135deg, rgba(191,5,5,1) 0%, rgba(175,0,0,1) 27%, rgba(255,0,108,1) 80%)',
         },
       }).showToast()
-    } else if (puntosLocal != '0' && puntosVisitante != '0') {
+    } else if (puntosLocal != 0 && puntosVisitante != 0) {
       //Asigno los valores de las variables creadas anteriormente, a los datos correspondientes del objeto
       partidosAJugar[i].puntosLocal = puntosLocal
       partidosAJugar[i].puntosVisitante = puntosVisitante
@@ -931,10 +947,11 @@ function actualizarTabla() {
 
 function ordenarTabla() {
   equiposLS = JSON.parse(localStorage.getItem('equiposLS'))
-  //Ordeno a los equipos por victorias conseguidas, y le asigno esos objetos ordenados al array "tablaOrdenada"
-  tablaOrdenada = equiposLS.sort((a, b) => a.victorias < b.victorias)
-  //Una vez ordenados, ejecuto la funcion que muestra la tabla en pantalla
 
+  //Ordeno a los equipos por victorias conseguidas, y le asigno esos objetos ordenados al array "tablaOrdenada"
+  tablaOrdenada = equiposLS.sort((a, b) => b.victorias - a.victorias)
+  console.log('Un vinito pal Santi 🍷')
+  //Una vez ordenados, ejecuto la funcion que muestra la tabla en pantalla
   mostrarTabla()
 }
 

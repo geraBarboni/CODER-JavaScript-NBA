@@ -299,6 +299,12 @@ function mostrarPartidosDelDia() {
   //Si el div esta ocupado, lo limpio, para evitar que se repitan las cards cada vez que ejecuto la funcion
   partidosDelDia.innerHTML = ''
 
+  if (partidosAJugar.length === 0) {
+    partidosDelDia.innerHTML += `
+    <p class="text-center">No hay partidos programados en el dia</p>
+    `
+  }
+
   //Recorro el array de partidos a jugar y por cada ciclo agrego una card con la informacion correspondiente
   for (let i = 0; i < partidosAJugar.length; i++) {
     partidosDelDia.innerHTML += `
@@ -328,6 +334,14 @@ function mostrarResultadosindex() {
   let resultadosDefinidosIndexLS = JSON.parse(
     localStorage.getItem('partidosTerminados'),
   )
+
+  resultadosDefinidosIndex.innerHTML = ''
+
+  if (resultadosDefinidosIndexLS.length === 0) {
+    resultadosDefinidosIndex.innerHTML += `
+    <p class="text-center">No hay partidos programados en el dia</p>
+    `
+  }
 
   //Recorro el array con los partidos ya finalizados
   for (let i = 0; i < resultadosDefinidosIndexLS.length; i++) {
@@ -385,14 +399,17 @@ function mostrarResultadosindex() {
 function ordenarTabla() {
   equiposLS = JSON.parse(localStorage.getItem('equiposLS'))
   //Ordeno a los equipos por victorias conseguidas, y le asigno esos objetos ordenados al array "tablaOrdenada"
-  tablaOrdenada = equiposLS.sort((a, b) => a.victorias < b.victorias)
+
+  tablaOrdenada = equiposLS.sort((a, b) => b.victorias - a.victorias)
+
   //Una vez ordenados, ejecuto la funcion que muestra la tabla en pantalla
   mostrarTabla()
 }
 
 //mostrarTabla(1.2.1.1.1.1)
 function mostrarTabla() {
-  eventoReconocerLocalStorageEquipos()
+  //eventoReconocerLocalStorageEquipos()
+
   //Llamo al <div> donde se mostraran las cards de la tabla
   let tablaDePosiciones = document.getElementById('tablaDePosiciones')
 
@@ -428,6 +445,7 @@ function mostrarTabla() {
 }
 
 //Llamo a la API
+
 async function estadisticasAPI() {
   try {
     let response = await fetch(

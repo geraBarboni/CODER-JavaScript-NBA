@@ -15,7 +15,7 @@ function ingresar() {
   //Obtengo el usuario y la contraseña para acceder al panel de administrador
   let usuario = document.getElementById('usuario').value
   let contraseña = document.getElementById('pass').value
-  let alert = document.getElementById('alerts')
+
   if (usuario === 'usuario' && contraseña === '123123') {
     location.href = '../sections/admin.html'
   } else {
